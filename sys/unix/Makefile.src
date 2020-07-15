@@ -452,7 +452,7 @@ HACKCSRC = allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c \
 	   sp_lev.c spell.c steal.c steed.c sys.c teleport.c timeout.c \
 	   topten.c track.c trap.c u_init.c \
 	   uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
-	   windows.c wizard.c worm.c worn.c write.c zap.c
+	   windows.c wizard.c worm.c worn.c write.c zap.c test.c
 
 # all operating-system-dependent .c (for dependencies and such)
 SYSCSRC = ../sys/atari/tos.c ../sys/share/pcmain.c ../sys/share/pcsys.c \
@@ -740,7 +740,8 @@ $(HACK_H): ../include/hack.h $(CONFIG_H) ../include/lint.h ../include/align.h \
 		../include/flag.h ../include/rm.h ../include/vision.h \
 		../include/display.h ../include/engrave.h ../include/rect.h \
 		../include/region.h ../include/winprocs.h ../include/botl.h \
-		../include/sys.h ../include/wintty.h ../include/trampoli.h
+		../include/sys.h ../include/wintty.h ../include/trampoli.h \
+		../include/test.h
 	touch $(HACK_H)
 #
 tos.o: ../sys/atari/tos.c $(HACK_H) ../include/tcap.h
@@ -1091,6 +1092,7 @@ worm.o: worm.c $(HACK_H) ../include/lev.h
 worn.o: worn.c $(HACK_H)
 write.o: write.c $(HACK_H)
 zap.o: zap.c $(HACK_H)
+test.o: test.o $(HACK_H)
 # DEPENDENCIES MUST END AT END OF FILE
 # IF YOU PUT STUFF HERE IT WILL GO AWAY
 # see make depend above
