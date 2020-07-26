@@ -8,6 +8,7 @@
 
 #include "hack.h"
 #include "dlb.h"
+#include <json-c/json.h>
 
 STATIC_DCL boolean FDECL(is_swallow_sym, (int));
 STATIC_DCL int FDECL(append_str, (char *, const char *));
@@ -42,6 +43,7 @@ is_swallow_sym(c)
 int c;
 {
     int i;
+    array_list_new(0);
 
     for (i = S_sw_tl; i <= S_sw_br; i++)
         if ((int) showsyms[i] == c)

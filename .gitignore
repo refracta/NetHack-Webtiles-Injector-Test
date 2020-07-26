@@ -29,7 +29,7 @@ core
 .*.swp
 
 # We generate makefiles by shell script
-Makefile
+# Makefile
 
 # Win32-specific ignores
 Debug/
