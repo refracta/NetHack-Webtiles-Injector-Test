@@ -99,7 +99,7 @@ all:	$(GAME) recover Guidebook $(VARDAT) dungeon spec_levs check-dlb
 	@echo "Done."
 
 json: 
-	(mkdir -p json-c/build; cd json-c/build; cmake .. -DCMAKE_INSTALL_PREFIX=../../json_output; make -j4 && make install)
+	(mkdir -p json-c/build; cd json-c/build; cmake .. -DBUILD_SHARED_LIBS=off -DCMAKE_INSTALL_PREFIX=../../json_output; make -j4 && make install)
 
 # Note: many of the dependencies below are here to allow parallel make
 # to generate valid output
