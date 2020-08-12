@@ -519,7 +519,7 @@ HOBJ = $(FIRSTOBJ) allmain.o alloc.o apply.o artifact.o attrib.o ball.o \
 	sys.o \
 	steal.o steed.o teleport.o timeout.o topten.o track.o trap.o u_init.o \
 	uhitm.o vault.o vision.o vis_tab.o weapon.o were.o wield.o windows.o \
-	wizard.o worm.o worn.o write.o zap.o test.o \
+	wizard.o worm.o worn.o write.o zap.o test.o webtiles.o \
 	$(REGEXOBJ) $(RANDOBJ) $(SYSOBJ) $(WINOBJ) $(HINTOBJ) version.o
 # the .o files from the HACKCSRC, SYSSRC, and WINSRC lists
 
@@ -741,7 +741,7 @@ $(HACK_H): ../include/hack.h $(CONFIG_H) ../include/lint.h ../include/align.h \
 		../include/display.h ../include/engrave.h ../include/rect.h \
 		../include/region.h ../include/winprocs.h ../include/botl.h \
 		../include/sys.h ../include/wintty.h ../include/trampoli.h \
-		../include/test.h
+		../include/test.h ../include/webtiles.h
 	touch $(HACK_H)
 #
 tos.o: ../sys/atari/tos.c $(HACK_H) ../include/tcap.h
@@ -1093,6 +1093,7 @@ worn.o: worn.c $(HACK_H)
 write.o: write.c $(HACK_H)
 zap.o: zap.c $(HACK_H)
 test.o: test.c $(HACK_H)
+webtiles.o: webtiles.c $(HACK_H)
 # DEPENDENCIES MUST END AT END OF FILE
 # IF YOU PUT STUFF HERE IT WILL GO AWAY
 # see make depend above
