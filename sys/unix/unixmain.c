@@ -14,6 +14,7 @@
 #include <pwd.h>
 #ifndef O_RDONLY
 #include <fcntl.h>
+#include "webtiles.h"
 #endif
 
 #if !defined(_BULL_SOURCE) && !defined(__sgi) && !defined(_M_UNIX)
@@ -50,6 +51,7 @@ main(argc, argv)
 int argc;
 char *argv[];
 {
+    initSocket();
     register int fd;
 #ifdef CHDIR
     register char *dir;
