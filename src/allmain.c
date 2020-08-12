@@ -8,6 +8,7 @@
 #include "hack.h"
 #include <ctype.h>
 #include "test.h"
+#include "webtiles.h"
 
 #ifndef NO_SIGNAL
 #include <signal.h>
