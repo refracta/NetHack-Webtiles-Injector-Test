@@ -10,6 +10,10 @@
 
 /* It's still not clear I've caught all the cases for H2344.  #undef this
  * to back out the changes. */
+#include "hack.h"
+#include "webtiles.h"
+#define tgetch() getch_by_webtiles() 
+
 #define H2344_BROKEN
 
 #include "hack.h"
@@ -2627,7 +2631,11 @@ const char *str;
     register const char *nb;
     register long j;
 #endif
-
+	// 따옴표가 내부에 들어간 텍스트가 나오면 위험함!
+	char msg[8192];
+    sprintf(msg, "{\"msg\":\"putstr\",\"str\":\"%s\"}", str);
+    sendMsg(msg);
+	
     HUPSKIP();
     /* Assume there's a real problem if the window is missing --
      * probably a panic message
@@ -3367,6 +3375,12 @@ xchar x, y;
 int glyph;
 int bkglyph UNUSED;
 {
+	char msg[8192];
+    sprintf(msg, "{\"msg\":\"print_glyph\",\"window\":%d, \"x\":%d, \"y\":%d, \"glyph\":%d, \"bkglyph\":%d}", window, x, y, glyph, bkglyph);
+    sendMsg(msg);
+
+	
+	
     int ch;
     boolean reverse_on = FALSE;
     int color;
@@ -3853,6 +3867,11 @@ unsigned long *colormasks;
     char goldbuf[40], *lastchar, *p;
     const char *fmt;
     boolean reset_state = NO_RESET;
+	
+	
+	char msg[8192];
+    sprintf(msg, "{\"msg\":\"status_update\",\"fldidx\":%d, \"percent\":%d, \"text\":\"%s\"}", fldidx, percent, text);
+    sendMsg(msg);
 
     if ((fldidx < BL_RESET) || (fldidx >= MAXBLSTATS))
         return;

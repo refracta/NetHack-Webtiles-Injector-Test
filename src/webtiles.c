@@ -9,10 +9,11 @@
 #include <fcntl.h>
 
 #include <stdbool.h>
+// TODO BOOL 대체 논의
 #include <json-c/json.h>
 #include <bits/time.h>
 #include <time.h>
-
+#include <unistd.h>
 
 #define DEFAULT_SERVER_PATH "/tmp/nethack-webtiles-server"
 #define DEFAULT_CLIENT_PATH "/tmp/nethack-webtiles-client"
@@ -85,19 +86,32 @@ void sendInitMsg(int sockfd, struct sockaddr_un address) {
     sendto(sockfd, (void *) &initSocketMsg, sizeof(initSocketMsg), 0, (struct sockaddr *) &address, sizeof(address));
 }
 
-void handleCore(int sockfd, struct sockaddr_un address, json_object *obj, char *msg) {
-    if (strcmp(msg, "debug") == 0) {
 
-    } else {
-        printf("Unknown Request!");
+
+
+
+bool isKeyTriggered = false;
+int keyCode = -1;
+void handleCore(int sockfd, struct sockaddr_un address, json_object *obj, char *msg) {
+    if (strcmp(msg, "key") == 0) {
+        json_object *keyObj = json_object_object_get(obj, "keyCode");
+        keyCode = json_object_get_int(keyObj);
+        isKeyTriggered = true;
+    } if (strcmp(msg, "debug") == 0) {
+
+    }  else {
+        // printf("Unknown Request!");
     }
 }
+
+
 
 // https://blog.habets.se/2010/09/gettimeofday-should-never-be-used-to-measure-time.html
 struct timespec lastReceivePingTime;
 struct timespec lastSendPingTime;
 const char PING_MSG[] = "{\"msg\":\"ping\"}";
 const char PONG_MSG[] = "{\"msg\":\"pong\"}";
+
 
 void handleMsg(int sockfd, struct sockaddr_un address, json_object *obj) {
     json_object *msgObj = json_object_object_get(obj, "msg");
@@ -125,7 +139,7 @@ void handleSocket(int sockfd, struct sockaddr_un address) {
     int recv = recvfrom(sockfd, (void *) &receiveBuffer, sizeof(receiveBuffer), 0, (struct sockaddr *) &address,
                         &addressSize);
     if (recv != -1) {
-        printf("Receive(%d): %s\n", recv, receiveBuffer);
+        // printf("Receive(%d): %s\n", recv, receiveBuffer);
         json_object *obj = json_tokener_parse(receiveBuffer);
         if (obj != NULL) {
             handleMsg(sockfd, address, obj);
@@ -178,9 +192,25 @@ void initSocket() {
     exit(0);
     */
 }
-
-void sendDebugMsg(int i){
-    char positionMessage[8192];
+/*
+ *
+ *   char positionMessage[8192];
     sprintf(positionMessage, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
-    sendto(sockfd, (void *) &positionMessage, sizeof(positionMessage), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
+ */
+// 개선의 여지
+void sendMsg(char * msg){
+    char buffer[8192];
+    sprintf(buffer, "%s", msg);
+    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
+}
+
+int getch_by_webtiles(){
+    while(true){
+        usleep(1);
+        handleSocket(sockfd, clientAddress);
+        if(isKeyTriggered){
+            isKeyTriggered = false;
+            return keyCode;
+        }
+    }
 }
