@@ -7,7 +7,6 @@
 
 #include "hack.h"
 #include <ctype.h>
-#include "test.h"
 #include "webtiles.h"
 
 #ifndef NO_SIGNAL
@@ -58,12 +57,15 @@ boolean resuming;
         pline("Watch out!  Bad things can happen on Friday the 13th.");
         change_luck(-1);
     }
+	
+	/*
     int tmp_ = add_test(3, 1);
     char c_ = tmp_ + '0';
     char msg[100] = "TEST #1 add new object file 3+1 = ";
     strncat(msg, &c_, 1);
     pline(msg);
-
+	*/
+	
     if (!resuming) { /* new game */
         context.rndencode = rnd(9000);
         set_wear((struct obj *) 0); /* for side-effects of starting gear */
@@ -457,8 +459,10 @@ boolean resuming;
             /* [should this be flush_screen() instead?] */
             display_nhwindow(WIN_MAP, FALSE);
         }
-        pline("is it end of turn?");
-        You("%d, %d", u.ux, u.uy);
+		/*
+			pline("is it end of turn?");
+			You("%d, %d", u.ux, u.uy);
+		*/
     }
 }
 
