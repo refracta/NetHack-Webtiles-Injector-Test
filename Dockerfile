@@ -9,6 +9,4 @@ WORKDIR /usr/src/jsonc-build
 RUN cmake ../json-c && \
         make install
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
-
-WORKDIR /usr/src/nethack
-RUN sh sys/unix/setup.sh sys/unix/hints/linux-webtiles
+WORKDIR /usr/src
