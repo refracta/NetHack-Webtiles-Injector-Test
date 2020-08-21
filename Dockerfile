@@ -11,6 +11,6 @@ WORKDIR /usr/src/jsonc-build
 RUN cmake ../json-c && \
         make install && \
         npm update && \
-        npm install node && \
+        npm install node 
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 WORKDIR /usr/src
