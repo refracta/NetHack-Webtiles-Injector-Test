@@ -197,7 +197,6 @@
 #endif
 
 #ifndef SYSCF
-#define SYSCF                /* use a global configuration */
 #define SYSCF_FILE "sysconf" /* global configuration is in a file */
 #endif
 
