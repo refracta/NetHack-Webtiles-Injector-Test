@@ -1,9 +1,9 @@
-FROM gcc:latest
+FROM ubuntu:bionic
 
 WORKDIR /usr/src
 RUN apt-get -y update && \
-        DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        cmake bison flex gdb libxaw7-dev xfonts-utils \
+        apt-get install -y \
+        gcc git cmake bison flex gdb libxaw7-dev xfonts-utils libncurses5-dev && \
         git clone https://github.com/json-c/json-c.git && \
         mkdir jsonc-build
 WORKDIR /usr/src/jsonc-build
