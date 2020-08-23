@@ -7,7 +7,7 @@ sudo docker run -it \
     -e DISPLAY=unix$DISPLAY \
     -v /tmp:/tmp \
     -v "$PWD":/usr/src/nethack \
-    -v "$PWD"/../Nethack-Webtiles/test/pseudo-node-server:/usr/src/nethack-server \
     --name nethack-webtiles-dev \
     emalron/nethack \
     bash
+
