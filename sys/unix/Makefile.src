@@ -360,7 +360,7 @@ WINCURSESLIB = -lncurses
 # If ZLIB_COMP is defined in config.h this is necessary to link with zlib.
 # LIBS = -lz
 #
-LIBS = -L../json_output/lib -ljson-c
+LIBS = -L../json_output/lib -ljson-c -lpthread
 
 # make NetHack
 GAME     = nethack

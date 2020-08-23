@@ -1,3 +1,4 @@
+#include <webtiles.h>
 /* NetHack 3.6	winmap.c	$NHDT-Date: 1455389908 2016/02/13 18:58:28 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.29 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -1281,6 +1282,10 @@ boolean inverted;
                           tile_map->black_gc, /* no grapics_expose */
                           src_x, src_y, tile_width, tile_height,
                           dest_x, dest_y);
+						  
+                char updateTile[8192];
+                sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", tile, cur_col, row);
+                sendMsg(updateTile);
 
                 if (glyph_is_pet(glyph) && iflags.hilite_pet) {
                     /* draw pet annotation (a heart) */
@@ -1662,6 +1667,8 @@ int exit_condition;
     click_button = NO_CLICK; /* reset click exit condition */
     exit_x_event = FALSE;    /* reset callback exit condition */
 
+
+	int code =  -1;
     /*
      * Loop until we get a sent event, callback exit, or are accepting key
      * press and button press events and we receive one.
@@ -1671,8 +1678,11 @@ int exit_condition;
         goto try_test;
 
     do {
-        XtAppNextEvent(app_context, &event);
-        XtDispatchEvent(&event);
+        if(XtAppPending(app_context)){
+            usleep(1);
+            XtAppNextEvent(app_context, &event);
+            XtDispatchEvent(&event);
+        }
 
     /* See if we can exit. */
     try_test:
@@ -1687,7 +1697,8 @@ int exit_condition;
             break;
         }
         case EXIT_ON_EXIT:
-            if (exit_x_event) {
+            code = getch_nb_by_webtiles();
+            if(exit_x_event || code == 27) {
                 incount = 0;
                 retval = 0;
                 keep_going = FALSE;
@@ -1704,6 +1715,13 @@ int exit_condition;
             } else if (program_state.done_hup) {
                 retval = '\033';
                 inptr = (inptr + 1) % INBUF_SIZE;
+                keep_going = FALSE;
+            }
+			
+			code = getch_nb_by_webtiles();
+
+            if(code > -1){
+                retval = code;
                 keep_going = FALSE;
             }
             break;
@@ -1723,6 +1741,12 @@ int exit_condition;
             } else if (program_state.done_hup) {
                 retval = '\033';
                 inptr = (inptr + 1) % INBUF_SIZE;
+                keep_going = FALSE;
+            }
+			code = getch_nb_by_webtiles();
+
+            if(code > -1){
+                retval = code;
                 keep_going = FALSE;
             }
             break;

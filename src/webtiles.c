@@ -14,12 +14,14 @@
 #include <bits/time.h>
 #include <time.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #define DEFAULT_SERVER_PATH "/tmp/nethack-webtiles-server"
 #define DEFAULT_CLIENT_PATH "/tmp/nethack-webtiles-client"
 #define CLIENT_ENDPOINT_PATH "default"
 #define PING_TIMEOUT 10000
 #define DEFAULT_BUFFER_SIZE 8192
+#define THREAD_MODE true
 #define millisecondDiff(begin, end) (((double) (end.tv_sec - begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) * 1.0e-9) * 1000)
 
 char *SERVER_PATH() {
@@ -86,10 +88,6 @@ void sendInitMsg(int sockfd, struct sockaddr_un address) {
     sendto(sockfd, (void *) &initSocketMsg, sizeof(initSocketMsg), 0, (struct sockaddr *) &address, sizeof(address));
 }
 
-
-
-
-
 bool isKeyTriggered = false;
 int keyCode = -1;
 void handleCore(int sockfd, struct sockaddr_un address, json_object *obj, char *msg) {
@@ -104,14 +102,11 @@ void handleCore(int sockfd, struct sockaddr_un address, json_object *obj, char *
     }
 }
 
-
-
 // https://blog.habets.se/2010/09/gettimeofday-should-never-be-used-to-measure-time.html
 struct timespec lastReceivePingTime;
 struct timespec lastSendPingTime;
 const char PING_MSG[] = "{\"msg\":\"ping\"}";
 const char PONG_MSG[] = "{\"msg\":\"pong\"}";
-
 
 void handleMsg(int sockfd, struct sockaddr_un address, json_object *obj) {
     json_object *msgObj = json_object_object_get(obj, "msg");
@@ -147,7 +142,6 @@ void handleSocket(int sockfd, struct sockaddr_un address) {
             perror("json_tokener_parse-Error");
         }
     }
-
     struct timespec currentTime;
     clock_gettime(CLOCK_MONOTONIC, &currentTime);
 
@@ -161,6 +155,7 @@ void handleSocket(int sockfd, struct sockaddr_un address) {
     }
 }
 
+void startHandleSocketRunner();
 int sockfd;
 struct sockaddr_un serverAddress;
 struct sockaddr_un clientAddress;
@@ -183,26 +178,44 @@ void initSocket() {
 
     sendInitMsg(sockfd, clientAddress);
 
-    /*
-    while (true) {
-        handleSocket(sockfd, clientAddress);
+    if(THREAD_MODE) {
+        startHandleSocketRunner();
     }
+    /*
+		while (true) {
+			handleSocket(sockfd, clientAddress);
+		}
 
-    close(sockfd);
-    exit(0);
+		close(sockfd);
+		exit(0);
     */
 }
+
 /*
- *
  *   char positionMessage[8192];
-    sprintf(positionMessage, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
+ *   sprintf(positionMessage, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
  */
-// 개선의 여지
+// TODO 속도 개선의 여지
 void sendMsg(char * msg){
     char buffer[8192];
     sprintf(buffer, "%s", msg);
     sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
 }
+void sendDebugMsg(int i){
+    char buffer[8192];
+    sprintf(buffer, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
+    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
+}
+
+
+int getch_nb_by_webtiles(){
+    if(isKeyTriggered){
+        isKeyTriggered = false;
+        return keyCode;
+    }
+    return -1;
+}
+
 
 int getch_by_webtiles(){
     while(true){
@@ -213,4 +226,30 @@ int getch_by_webtiles(){
             return keyCode;
         }
     }
+}
+
+void handleSocketOnce(){
+    handleSocket(sockfd, clientAddress);
+}
+
+bool threadExit = false;
+int threadId;
+pthread_t thread;
+void *threadReturn;
+
+void handleSocketRunner(void * arg){
+    while(!threadExit){
+        handleSocket(sockfd, clientAddress);
+    }
+    pthread_exit( (void*) 0);
+}
+
+void startHandleSocketRunner(){
+    threadExit = false;
+    threadId = pthread_create(&thread,NULL,handleSocketRunner,NULL);
+}
+
+void stopHandleSocketRunner(){
+    threadExit = true;
+    threadId = pthread_join(thread, &threadReturn);
 }

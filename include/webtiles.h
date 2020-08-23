@@ -26,4 +26,8 @@ void handleMsg(int, struct sockaddr_un, json_object *);
 void handleSocket(int, struct sockaddr_un);
 void initSocket();
 void sendMsg(char *);
+void sendDebugMsg(int i);
 int getch_by_webtiles();
+void handleSocketOnce();
+void handleSocketLoop();
+int getch_nb_by_webtiles();
