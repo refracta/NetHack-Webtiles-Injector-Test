@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winval.c	$NHDT-Date: 1432512808 2015/05/25 00:13:28 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -36,6 +37,10 @@ create_value(parent, name_value)
 Widget parent;
 const char *name_value;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Widget\",\"functionMain\":\"create_value(parent, name_value)\",\"paramLine\":[\"const char *name_value;\",\"Widget parent;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form, name;
     Arg args[8];
     Cardinal num_args;
@@ -79,6 +84,10 @@ set_name(w, new_label)
 Widget w;
 const char *new_label;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_name(w, new_label)\",\"paramLine\":[\"const char *new_label;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Widget name;
 
@@ -92,6 +101,10 @@ set_name_width(w, new_width)
 Widget w;
 int new_width;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_name_width(w, new_width)\",\"paramLine\":[\"int new_width;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Widget name;
 
@@ -104,6 +117,10 @@ int
 get_name_width(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"get_name_width(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Dimension width;
     Widget name;
@@ -119,6 +136,10 @@ set_value(w, new_value)
 Widget w;
 const char *new_value;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_value(w, new_value)\",\"paramLine\":[\"const char *new_value;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Widget val;
 
@@ -132,6 +153,10 @@ set_value_width(w, new_width)
 Widget w;
 int new_width;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_value_width(w, new_width)\",\"paramLine\":[\"int new_width;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Widget val;
 
@@ -144,6 +169,10 @@ int
 get_value_width(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"get_value_width(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Widget val;
     Dimension width;
@@ -160,6 +189,10 @@ void
 hilight_value(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"hilight_value(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     swap_fg_bg(XtNameToWidget(w, WVALUE));
 }
 
@@ -168,6 +201,10 @@ void
 swap_fg_bg(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"swap_fg_bg(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     Pixel fg, bg;
 

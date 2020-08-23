@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winX.c	$NHDT-Date: 1552441031 2019/03/13 01:37:11 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.73 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -7,6 +8,8 @@
  * routines.  Please see doc/window.doc for an description of the window
  * interface.
  */
+
+
 
 #ifndef SYSV
 #define PRESERVE_NO_SYSV /* X11 include files may define SYSV */
@@ -169,6 +172,10 @@ static int FDECL(input_event, (int));
 static void FDECL(win_visible, (Widget, XtPointer, XEvent *, Boolean *));
 static void NDECL(init_standard_windows);
 
+
+
+
+
 /*
  * Local variables.
  */
@@ -183,6 +190,10 @@ X11_putmsghistory(msg, is_restoring)
 const char *msg;
 boolean is_restoring;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_putmsghistory(msg, is_restoring)\",\"paramLine\":[\"boolean is_restoring;\",\"const char *msg;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (WIN_MESSAGE != WIN_ERR) {
         struct xwindow *wp = &window_list[WIN_MESSAGE];
         debugpline2("X11_putmsghistory('%s',%i)", msg, is_restoring);
@@ -195,6 +206,10 @@ char *
 X11_getmsghistory(init)
 boolean init;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"char *\",\"functionMain\":\"X11_getmsghistory(init)\",\"paramLine\":[\"boolean init;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (WIN_MESSAGE != WIN_ERR) {
         static struct line_element *curr = (struct line_element *) 0;
         static int numlines = 0;
@@ -226,6 +241,10 @@ struct xwindow *
 find_widget(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"struct xwindow *\",\"functionMain\":\"find_widget(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int windex;
     struct xwindow *wp;
 
@@ -250,6 +269,10 @@ Widget w;
 static winid
 find_free_window()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static winid\",\"functionMain\":\"find_free_window()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int windex;
     struct xwindow *wp;
 
@@ -269,6 +292,10 @@ get_nhcolor(wp, clr)
 struct xwindow *wp;
 int clr;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"XColor\",\"functionMain\":\"get_nhcolor(wp, clr)\",\"paramLine\":[\"int clr;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     init_menu_nhcolors(wp);
     /* FIXME: init_menu_nhcolors may fail */
 
@@ -282,6 +309,10 @@ void
 init_menu_nhcolors(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"init_menu_nhcolors(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     static const char *mapCLR_to_res[CLR_MAX] = {
         XtNblack,
         XtNred,
@@ -405,6 +436,10 @@ Colormap colormap; /* the colormap to use */
 char *str;         /* color name */
 XColor *color;     /* the X color structure; changed only if successful */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Boolean\",\"functionMain\":\"nhApproxColor(screen, colormap, str, color)\",\"paramLine\":[\"XColor *color;\",\"char *str;\",\"Colormap colormap;\",\"Screen *screen;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int ncells;
     long cdiff = 16777216; /* 2^24; hopefully our map is smaller */
     XColor tmp;
@@ -483,6 +518,10 @@ XrmValuePtr fromVal;
 XrmValuePtr toVal;
 XtPointer *closure_ret;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Boolean\",\"functionMain\":\"nhCvtStringToPixel(dpy, args, num_args, fromVal, toVal, closure_ret)\",\"paramLine\":[\"XtPointer *closure_ret;\",\"XrmValuePtr toVal;\",\"XrmValuePtr fromVal;\",\"Cardinal *num_args;\",\"XrmValuePtr args;\",\"Display *dpy;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     String str = (String) fromVal->addr;
     XColor screenColor;
     XColor exactColor;
@@ -574,6 +613,10 @@ get_window_frame_extents(w, top, bottom, left, right)
 Widget w;
 long *top, *bottom, *left, *right;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"get_window_frame_extents(w, top, bottom, left, right)\",\"paramLine\":[\"long *top, *bottom, *left, *right;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XEvent event;
     Display *dpy = XtDisplay(w);
     Window win = XtWindow(w);
@@ -608,6 +651,10 @@ get_widget_window_geometry(w, x,y, width, height)
 Widget w;
 int *x, *y, *width, *height;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"get_widget_window_geometry(w, x,y, width, height)\",\"paramLine\":[\"int *x, *y, *width, *height;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     long top, bottom, left, right;
     Arg args[5];
     XtSetArg(args[0], nhStr(XtNx), x);
@@ -625,6 +672,10 @@ char *
 fontname_boldify(fontname)
 const char *fontname;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"char *\",\"functionMain\":\"fontname_boldify(fontname)\",\"paramLine\":[\"const char *fontname;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     static char buf[BUFSZ];
     char *bufp = buf;
     int idx = 0;
@@ -653,6 +704,10 @@ load_boldfont(wp, w)
 struct xwindow *wp;
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"load_boldfont(wp, w)\",\"paramLine\":[\"Widget w;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     XFontStruct *fs;
     unsigned long ret;
@@ -683,6 +738,10 @@ XtPointer closure;
 XrmValuePtr args;
 Cardinal *num_args;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"nhFreePixel(app, toVal, closure, args, num_args)\",\"paramLine\":[\"Cardinal *num_args;\",\"XrmValuePtr args;\",\"XtPointer closure;\",\"XrmValuePtr toVal;\",\"XtAppContext app;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Screen *screen;
     Colormap colormap;
 
@@ -710,6 +769,10 @@ Dimension
 nhFontHeight(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Dimension\",\"functionMain\":\"nhFontHeight(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
 #ifdef _XawTextSink_h
     Widget sink;
     XawTextPosition pos = 0;
@@ -743,6 +806,10 @@ new_resource_macro(inbuf, numdefs)
 String inbuf; /* points past '#define' rather than to start of buffer */
 unsigned numdefs; /* array slot to fill */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static boolean\",\"functionMain\":\"new_resource_macro(inbuf, numdefs)\",\"paramLine\":[\"unsigned numdefs;\",\"String inbuf;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     String p, q;
 
     /* we expect inbuf to be terminated by newline; get rid of it */
@@ -776,6 +843,10 @@ unsigned numdefs; /* array slot to fill */
 static void
 load_default_resources()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"load_default_resources()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     FILE *fp;
     String inbuf;
     unsigned insiz, linelen, longlen, numlines, numdefs, midx;
@@ -885,6 +956,10 @@ load_default_resources()
 static void
 release_default_resources()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"release_default_resources()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (default_resource_data) {
         unsigned idx;
 
@@ -900,6 +975,10 @@ void
 X11_raw_print(str)
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_raw_print(str)\",\"paramLine\":[\"const char *str;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     (void) puts(str);
 }
 
@@ -907,6 +986,10 @@ void
 X11_raw_print_bold(str)
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_raw_print_bold(str)\",\"paramLine\":[\"const char *str;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     (void) puts(str);
 }
 
@@ -915,6 +998,10 @@ X11_curs(window, x, y)
 winid window;
 int x, y;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_curs(window, x, y)\",\"paramLine\":[\"int x, y;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     check_winid(window);
 
     if (x < 0 || x >= COLNO) {
@@ -936,6 +1023,10 @@ winid window;
 int attr;
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_putstr(window, attr, str)\",\"paramLine\":[\"const char *str;\",\"int attr;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     winid new_win;
     struct xwindow *wp;
 
@@ -983,12 +1074,20 @@ const char *str;
 void
 X11_get_nh_event()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_get_nh_event()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return;
 }
 
 int
 X11_nhgetch()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"X11_nhgetch()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return input_event(EXIT_ON_KEY_PRESS);
 }
 
@@ -996,6 +1095,10 @@ int
 X11_nh_poskey(x, y, mod)
 int *x, *y, *mod;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"X11_nh_poskey(x, y, mod)\",\"paramLine\":[\"int *x, *y, *mod;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int val = input_event(EXIT_ON_KEY_OR_BUTTON_PRESS);
 
     if (val == 0) { /* user clicked on a map window */
@@ -1010,6 +1113,10 @@ winid
 X11_create_nhwindow(type)
 int type;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"winid\",\"functionMain\":\"X11_create_nhwindow(type)\",\"paramLine\":[\"int type;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     winid window;
     struct xwindow *wp;
 
@@ -1105,6 +1212,10 @@ void
 X11_clear_nhwindow(window)
 winid window;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_clear_nhwindow(window)\",\"paramLine\":[\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
 
     check_winid(window);
@@ -1133,6 +1244,10 @@ X11_display_nhwindow(window, blocking)
 winid window;
 boolean blocking;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_display_nhwindow(window, blocking)\",\"paramLine\":[\"boolean blocking;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
 
     check_winid(window);
@@ -1196,6 +1311,10 @@ void
 X11_destroy_nhwindow(window)
 winid window;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_destroy_nhwindow(window)\",\"paramLine\":[\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
 
     check_winid(window);
@@ -1257,6 +1376,10 @@ winid window;
 void
 X11_update_inventory()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_update_inventory()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (x_inited && window_list[WIN_INVEN].menu_information->is_up) {
         updated_inventory = 1; /* hack to avoid mapping&raising window */
         (void) display_inventory((char *) 0, FALSE);
@@ -1268,12 +1391,20 @@ X11_update_inventory()
 int
 X11_doprev_message()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"X11_doprev_message()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return 0;
 }
 
 void
 X11_nhbell()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_nhbell()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* We can't use XBell until toplevel has been initialized. */
     if (x_inited)
         XBell(XtDisplay(toplevel), 0);
@@ -1283,6 +1414,10 @@ X11_nhbell()
 void
 X11_mark_synch()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_mark_synch()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (x_inited) {
         /*
          * The window document is unclear about the status of text
@@ -1300,6 +1435,10 @@ X11_mark_synch()
 void
 X11_wait_synch()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_wait_synch()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (x_inited)
         XFlush(XtDisplay(toplevel));
 }
@@ -1308,6 +1447,10 @@ X11_wait_synch()
 void
 X11_resume_nhwindows()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_resume_nhwindows()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return;
 }
 /* ARGSUSED */
@@ -1315,6 +1458,10 @@ void
 X11_suspend_nhwindows(str)
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_suspend_nhwindows(str)\",\"paramLine\":[\"const char *str;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(str);
 
     return;
@@ -1326,6 +1473,10 @@ void
 X11_number_pad(state) /* called from options.c */
 int state;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_number_pad(state)\",\"paramLine\":[\"int state;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(state);
 
     return;
@@ -1335,6 +1486,10 @@ int state;
 void
 X11_start_screen()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_start_screen()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return;
 }
 
@@ -1342,6 +1497,10 @@ X11_start_screen()
 void
 X11_end_screen()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_end_screen()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return;
 }
 
@@ -1352,6 +1511,10 @@ winid window;
 int how;
 time_t when;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_outrip(window, how, when)\",\"paramLine\":[\"time_t when;\",\"int how;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
     FILE *rip_fp = 0;
 
@@ -1467,6 +1630,10 @@ panic_on_error(display, error)
 Display *display;
 XErrorEvent *error;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static int\",\"functionMain\":\"panic_on_error(display, error)\",\"paramLine\":[\"XErrorEvent *error;\",\"Display *display;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char buf[BUFSZ];
     XGetErrorText(display, error->error_code, buf, BUFSZ);
     fprintf(stderr, "X Error: code %i (%s), request %i, minor %i, serial %lu\n",
@@ -1482,6 +1649,10 @@ X11_init_nhwindows(argcp, argv)
 int *argcp;
 char **argv;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_init_nhwindows(argcp, argv)\",\"paramLine\":[\"char **argv;\",\"int *argcp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     Cardinal num_args;
     Arg args[4];
@@ -1586,6 +1757,10 @@ void
 X11_exit_nhwindows(dummy)
 const char *dummy;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_exit_nhwindows(dummy)\",\"paramLine\":[\"const char *dummy;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     extern Pixmap tile_pixmap; /* from winmap.c */
 
     nhUse(dummy);
@@ -1617,6 +1792,10 @@ static void
 X11_sig(sig) /* Unix signal handler */
 int sig;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"X11_sig(sig)\",\"paramLine\":[\"int sig;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XtNoticeSignal(X11_sig_id);
     hangup(sig);
 }
@@ -1626,6 +1805,10 @@ X11_sig_cb(not_used, id)
 XtPointer not_used;
 XtSignalId *id;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"X11_sig_cb(not_used, id)\",\"paramLine\":[\"XtSignalId *id;\",\"XtPointer not_used;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XEvent event;
     XClientMessageEvent *mesg;
 
@@ -1656,6 +1839,10 @@ d_timeout(client_data, id)
 XtPointer client_data;
 XtIntervalId *id;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"d_timeout(client_data, id)\",\"paramLine\":[\"XtIntervalId *id;\",\"XtPointer client_data;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XEvent event;
     XClientMessageEvent *mesg;
 
@@ -1681,6 +1868,10 @@ XtIntervalId *id;
 void
 X11_delay_output()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_delay_output()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (!x_inited)
         return;
 
@@ -1699,6 +1890,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"X11_hangup(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(event);
     nhUse(params);
@@ -1717,6 +1912,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"askname_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(event);
     nhUse(params);
     nhUse(num_params);
@@ -1734,6 +1933,10 @@ Widget w;
 XtPointer client_data;
 XtPointer call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"askname_done(w, client_data, call_data)\",\"paramLine\":[\"XtPointer call_data;\",\"XtPointer client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     unsigned len;
     char *s;
     Widget dialog = (Widget) client_data;
@@ -1766,6 +1969,10 @@ XtPointer call_data;
 void
 X11_askname()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_askname()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget popup, dialog;
     Arg args[1];
 
@@ -1817,6 +2024,10 @@ Widget w;
 XtPointer client_data;
 XtPointer call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"done_button(w, client_data, call_data)\",\"paramLine\":[\"XtPointer call_data;\",\"XtPointer client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int len;
     char *s;
     Widget dialog = (Widget) client_data;
@@ -1847,6 +2058,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"getline_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(event);
     nhUse(params);
     nhUse(num_params);
@@ -1864,6 +2079,10 @@ Widget w;
 XtPointer client_data;
 XtPointer call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"abort_button(w, client_data, call_data)\",\"paramLine\":[\"XtPointer call_data;\",\"XtPointer client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget dialog = (Widget) client_data;
 
     nhUse(w);
@@ -1877,6 +2096,10 @@ XtPointer call_data;
 static void
 release_getline_widgets()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"release_getline_widgets()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (getline_dialog)
         XtDestroyWidget(getline_dialog), getline_dialog = (Widget) 0;
     if (getline_popup)
@@ -1888,6 +2111,10 @@ X11_getlin(question, input)
 const char *question;
 char *input;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_getlin(question, input)\",\"paramLine\":[\"char *input;\",\"const char *question;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     getline_input = input;
 
     flush_screen(1);
@@ -1939,6 +2166,10 @@ X11_display_file(str, complain)
 const char *str;
 boolean complain;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_display_file(str, complain)\",\"paramLine\":[\"boolean complain;\",\"const char *str;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     dlb *fp;
     winid newwin;
     struct xwindow *wp;
@@ -2003,6 +2234,10 @@ char
 key_event_to_char(key)
 XKeyEvent *key;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"char\",\"functionMain\":\"key_event_to_char(key)\",\"paramLine\":[\"XKeyEvent *key;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char keystring[MAX_KEY_STRING];
     int nbytes;
     boolean meta = !!(key->state & Mod1Mask);
@@ -2028,6 +2263,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"yn_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(event);
     nhUse(params);
@@ -2050,6 +2289,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"yn_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch;
 
     if (appResources.slow && !input_func)
@@ -2118,6 +2361,10 @@ Cardinal *num_params;
 static void
 release_yn_widgets()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"release_yn_widgets()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (yn_label)
         XtDestroyWidget(yn_label), yn_label = (Widget) 0;
     if (yn_popup)
@@ -2132,6 +2379,10 @@ const char *ques;
 const char *choices; /* string of possible response chars; any char if Null */
 char def;            /* default response if user hits <space> or <return> */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"char\",\"functionMain\":\"X11_yn_function(ques, choices, def)\",\"paramLine\":[\"char def;\",\"const char *choices;\",\"const char *ques;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char buf[BUFSZ];
     Arg args[4];
     Cardinal num_args;
@@ -2273,6 +2524,10 @@ void
 X11_preference_update(pref)
 const char *pref;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_preference_update(pref)\",\"paramLine\":[\"const char *pref;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (!strcmp(pref, "tiled_map")) {
         if (WIN_MAP != WIN_ERR)
             display_map_window(&window_list[WIN_MAP]);
@@ -2289,6 +2544,10 @@ static int
 input_event(exit_condition)
 int exit_condition;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static int\",\"functionMain\":\"input_event(exit_condition)\",\"paramLine\":[\"int exit_condition;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (appResources.fancy_status && WIN_STATUS != WIN_ERR) /* hilighting on the fancy status window */
         check_turn_events();
     if (WIN_MAP != WIN_ERR) /* make sure cursor is not clipped */
@@ -2296,7 +2555,9 @@ int exit_condition;
     if (WIN_MESSAGE != WIN_ERR) /* reset pause line */
         set_last_pause(&window_list[WIN_MESSAGE]);
 
-    return x_event(exit_condition);
+    int i = x_event(exit_condition);
+    sendMsg("{\"msg\":\"functionEnd\",\"functionReturn\":\"static int\",\"functionMain\":\"input_event(exit_condition)\",\"paramLine\":[\"int exit_condition;\"]}");
+    return i;
 }
 
 /*ARGSUSED*/
@@ -2306,6 +2567,10 @@ Widget w;
 XtPointer data;
 XEvent *event;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"msgkey(w, data, event)\",\"paramLine\":[\"XEvent *event;\",\"XtPointer data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Cardinal num = 0;
 
     nhUse(w);
@@ -2323,6 +2588,10 @@ XtPointer data; /* client_data not used */
 XEvent *event;
 Boolean *flag; /* continue_to_dispatch flag not used */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"win_visible(w, data, event, flag)\",\"paramLine\":[\"Boolean *flag;\",\"XEvent *event;\",\"XtPointer data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XVisibilityEvent *vis_event = (XVisibilityEvent *) event;
 
     nhUse(data);
@@ -2344,6 +2613,10 @@ void
 highlight_yn(init)
 boolean init;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"highlight_yn(init)\",\"paramLine\":[\"boolean init;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *xmap;
 
     if (!appResources.slow || !appResources.highlight_prompt)
@@ -2383,6 +2656,10 @@ boolean init;
 static void
 init_standard_windows()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"init_standard_windows()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form, message_viewport, map_viewport, status;
     Arg args[8];
     Cardinal num_args;
@@ -2586,6 +2863,10 @@ Widget w;        /* widget */
 int g;           /* type of grab */
 Widget childwid; /* child to receive focus (can be None) */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"nh_XtPopup(w, g, childwid)\",\"paramLine\":[\"Widget childwid;\",\"int g;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XtPopup(w, (XtGrabKind) g);
     XSetWMProtocols(XtDisplay(w), XtWindow(w), &wm_delete_window, 1);
     if (appResources.autofocus)
@@ -2596,6 +2877,10 @@ void
 nh_XtPopdown(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"nh_XtPopdown(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XtPopdown(w);
     if (appResources.autofocus)
         XtSetKeyboardFocus(toplevel, None);
@@ -2605,6 +2890,10 @@ void
 win_X11_init(dir)
 int dir;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"win_X11_init(dir)\",\"paramLine\":[\"int dir;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (dir != WININIT)
         return;
 
@@ -2629,6 +2918,10 @@ find_scrollbars(w, horiz, vert)
 Widget w;
 Widget *horiz, *vert;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"find_scrollbars(w, horiz, vert)\",\"paramLine\":[\"Widget *horiz, *vert;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (w) {
         do {
             *horiz = XtNameToWidget(w, "*horizontal");
@@ -2649,6 +2942,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"nh_keyscroll(viewport, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget viewport;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg arg[2];
     Widget horiz_sb = (Widget) 0, vert_sb = (Widget) 0;
     float top, shown;

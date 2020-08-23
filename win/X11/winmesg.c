@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winmesg.c	$NHDT-Date: 1454811935 2016/02/07 02:25:35 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.10 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -59,6 +60,10 @@ void
 set_message_slider(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_message_slider(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget scrollbar;
     float top;
 
@@ -76,6 +81,10 @@ struct xwindow *wp; /* window pointer */
 boolean create_popup;
 Widget parent;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_message_window(wp, create_popup, parent)\",\"paramLine\":[\"Widget parent;\",\"boolean create_popup;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[8];
     Cardinal num_args;
     Widget viewport;
@@ -212,6 +221,10 @@ void
 destroy_message_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_message_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (wp->popup) {
         nh_XtPopdown(wp->popup);
         if (!wp->keep_window)
@@ -233,6 +246,10 @@ void
 display_message_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"display_message_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     set_message_slider(wp);
     if (wp->mesg_information->dirty)
         redraw_message_window(wp);
@@ -247,6 +264,13 @@ append_message(wp, str)
 struct xwindow *wp;
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"append_message(wp, str)\",\"paramLine\":[\"const char *str;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+    char msg[8192];
+    sprintf(msg, "{\"msg\":\"putstr\",\"str\":\"%s\"}", str);
+    sendMsg(msg);
+
     char *mark, *remainder, buf[BUFSZ];
 
     if (!str)
@@ -273,6 +297,10 @@ static struct line_element *
 get_previous(mark)
 struct line_element *mark;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static struct line_element *\",\"functionMain\":\"get_previous(mark)\",\"paramLine\":[\"struct line_element *mark;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct line_element *curr;
 
     if (!mark)
@@ -294,6 +322,10 @@ set_circle_buf(mesg_info, count)
 struct mesg_info_t *mesg_info;
 int count;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"set_circle_buf(mesg_info, count)\",\"paramLine\":[\"int count;\",\"struct mesg_info_t *mesg_info;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     struct line_element *tail, *curr, *head;
 
@@ -372,6 +404,10 @@ char *s;
 XFontStruct *fs; /* Font for the window. */
 Dimension pixel_width;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static char *\",\"functionMain\":\"split(s, fs, pixel_width)\",\"paramLine\":[\"Dimension pixel_width;\",\"XFontStruct *fs;\",\"char *s;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char save, *end, *remainder;
 
     save = '\0';
@@ -404,6 +440,10 @@ add_line(mesg_info, s)
 struct mesg_info_t *mesg_info;
 const char *s;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"add_line(mesg_info, s)\",\"paramLine\":[\"const char *s;\",\"struct mesg_info_t *mesg_info;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     register struct line_element *curr = mesg_info->head;
     register int new_line_length = strlen(s);
 
@@ -434,6 +474,10 @@ void
 set_last_pause(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_last_pause(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     register struct mesg_info_t *mesg_info = wp->mesg_information;
 
 #ifdef ERASE_LINE
@@ -462,6 +506,10 @@ static void
 redraw_message_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"redraw_message_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct mesg_info_t *mesg_info = wp->mesg_information;
     register struct line_element *curr;
     register int row, y_base;
@@ -507,6 +555,10 @@ static void
 mesg_check_size_change(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"mesg_check_size_change(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct mesg_info_t *mesg_info = wp->mesg_information;
     Arg arg[2];
     Dimension new_width, new_height;
@@ -536,6 +588,10 @@ Widget w;
 XtPointer client_data; /* unused */
 XtPointer widget_data; /* expose event from Window widget */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"mesg_exposed(w, client_data, widget_data)\",\"paramLine\":[\"XtPointer widget_data;\",\"XtPointer client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XExposeEvent *event = (XExposeEvent *) widget_data;
 
     nhUse(client_data);
@@ -568,6 +624,10 @@ get_gc(w, mesg_info)
 Widget w;
 struct mesg_info_t *mesg_info;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"get_gc(w, mesg_info)\",\"paramLine\":[\"struct mesg_info_t *mesg_info;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XGCValues values;
     XtGCMask mask = GCFunction | GCForeground | GCBackground | GCFont;
     Pixel fgpixel, bgpixel;
@@ -600,6 +660,10 @@ mesg_resized(w, client_data, call_data)
 Widget w;
 XtPointer call_data, client_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"mesg_resized(w, client_data, call_data)\",\"paramLine\":[\"XtPointer call_data, client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[4];
     Cardinal num_args;
     Dimension pixel_width, pixel_height;

@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winmenu.c	$NHDT-Date: 1542245161 2018/11/15 01:26:01 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.33 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -86,6 +87,10 @@ XtTranslations menu_del_translation_table = (XtTranslations) 0;
 static void
 create_menu_translation_tables()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"create_menu_translation_tables()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (!menu_translation_table) {
         menu_translation_table = XtParseTranslationTable(menu_translations);
         menu_entry_translation_table
@@ -103,6 +108,10 @@ XtPointer ptr;
 XEvent *event;
 Boolean *flag;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_size_change_handler(w, ptr, event, flag)\",\"paramLine\":[\"Boolean *flag;\",\"XEvent *event;\",\"XtPointer ptr;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp = (struct xwindow *) ptr;
 
     nhUse(w);
@@ -131,6 +140,10 @@ menu_select(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_select(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct menu_info_t *menu_info;
     long how_many;
     x11_menu_item *curr = (x11_menu_item *) client_data;
@@ -184,6 +197,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"menu_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(event);
     nhUse(params);
     nhUse(num_params);
@@ -202,6 +219,10 @@ x11_menu_item *curr;
 int which;
 long how_many;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"invert_line(wp, curr, which, how_many)\",\"paramLine\":[\"long how_many;\",\"int which;\",\"x11_menu_item *curr;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
 
     nhUse(which);
@@ -235,6 +256,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"menu_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct menu_info_t *menu_info;
     x11_menu_item *curr;
     struct xwindow *wp;
@@ -386,6 +411,10 @@ menu_ok(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_ok(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp = (struct xwindow *) client_data;
 
     nhUse(w);
@@ -400,6 +429,10 @@ menu_cancel(w, client_data, call_data)
 Widget w; /* don't use - may be None */
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_cancel(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp = (struct xwindow *) client_data;
 
     nhUse(w);
@@ -418,6 +451,10 @@ menu_all(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_all(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(call_data);
 
@@ -430,6 +467,10 @@ menu_none(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_none(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(call_data);
 
@@ -442,6 +483,10 @@ menu_invert(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_invert(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(call_data);
 
@@ -454,6 +499,10 @@ menu_search(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_search(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp = (struct xwindow *) client_data;
     struct menu_info_t *menu_info = wp->menu_information;
 
@@ -470,6 +519,10 @@ static void
 search_menu(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"search_menu(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char *pat, buf[BUFSZ + 2]; /* room for '*' + BUFSZ-1 + '*' + '\0' */
     struct menu_info_t *menu_info = wp->menu_information;
 
@@ -503,6 +556,10 @@ static void
 select_all(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"select_all(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     int count;
 
@@ -520,6 +577,10 @@ static void
 select_none(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"select_none(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     int count;
 
@@ -537,6 +598,10 @@ static void
 invert_all(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"invert_all(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     int count;
 
@@ -553,6 +618,10 @@ invert_match(wp, match)
 struct xwindow *wp;
 char *match; /* wildcard pattern for pmatch() */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"invert_match(wp, match)\",\"paramLine\":[\"char *match;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     int count;
 
@@ -573,6 +642,10 @@ select_match(wp, match)
 struct xwindow *wp;
 char *match; /* wildcard pattern for pmatch() */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"select_match(wp, match)\",\"paramLine\":[\"char *match;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr, *found = 0;
     int count;
 
@@ -599,6 +672,10 @@ static void
 menu_popdown(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_popdown(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nh_XtPopdown(wp->popup); /* remove the event grab */
     XtDestroyWidget(wp->popup);
     wp->w = wp->popup = (Widget) 0;
@@ -613,6 +690,10 @@ void
 X11_start_menu(window)
 winid window;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_start_menu(window)\",\"paramLine\":[\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
     check_winid(window);
 
@@ -638,6 +719,10 @@ int attr;
 const char *str;
 boolean preselected;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_add_menu(window, glyph, identifier, ch, gch, attr, str, preselected)\",\"paramLine\":[\"boolean preselected;\",\"const char *str;\",\"int attr;\",\"char gch;\",\"char ch;\",\"const anything *identifier;\",\"int glyph;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *item;
     struct menu_info_t *menu_info;
 
@@ -709,6 +794,10 @@ X11_end_menu(window, query)
 winid window;
 const char *query;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_end_menu(window, query)\",\"paramLine\":[\"const char *query;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct menu_info_t *menu_info;
 
     check_winid(window);
@@ -727,6 +816,10 @@ winid window;
 int how;
 menu_item **menu_list;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"X11_select_menu(window, how, menu_list)\",\"paramLine\":[\"menu_item **menu_list;\",\"int how;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     struct xwindow *wp;
     struct menu_info_t *menu_info;
@@ -1001,6 +1094,10 @@ static char *
 copy_of(s)
 const char *s;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static char *\",\"functionMain\":\"copy_of(s)\",\"paramLine\":[\"const char *s;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (!s)
         s = "";
     return dupstr(s);
@@ -1014,6 +1111,10 @@ menu_create_buttons(wp, form, under)
 struct xwindow *wp;
 Widget form,under;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static Widget\",\"functionMain\":\"menu_create_buttons(wp, form, under)\",\"paramLine\":[\"Widget form,under;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[15];
     Cardinal num_args;
     int how = wp->menu_information->how;
@@ -1138,6 +1239,10 @@ menu_create_entries(wp, curr_menu)
 struct xwindow *wp;
 struct menu *curr_menu;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"menu_create_entries(wp, curr_menu)\",\"paramLine\":[\"struct menu *curr_menu;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     x11_menu_item *curr;
     int menulineidx = 0;
     Widget prevlinewidget;
@@ -1217,6 +1322,10 @@ static void
 destroy_menu_entry_widgets(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"destroy_menu_entry_widgets(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     WidgetList wlist;
     Cardinal numchild;
     Arg args[5];
@@ -1242,6 +1351,10 @@ static void
 move_menu(src_menu, dest_menu)
 struct menu *src_menu, *dest_menu;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"move_menu(src_menu, dest_menu)\",\"paramLine\":[\"struct menu *src_menu, *dest_menu;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     free_menu(dest_menu);   /* toss old menu */
     *dest_menu = *src_menu; /* make new menu current */
     /* leave no dangling ptrs */
@@ -1252,6 +1365,10 @@ static void
 free_menu_line_entries(mp)
 struct menu *mp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"free_menu_line_entries(mp)\",\"paramLine\":[\"struct menu *mp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* We're not freeing menu entry widgets here, but let XtDestroyWidget()
        on the parent widget take care of that */
     while (mp->base) {
@@ -1266,6 +1383,10 @@ static void
 free_menu(mp)
 struct menu *mp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"free_menu(mp)\",\"paramLine\":[\"struct menu *mp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     free_menu_line_entries(mp);
     if (mp->query)
         free((genericptr_t) mp->query);
@@ -1278,6 +1399,10 @@ static void
 reset_menu_to_default(mp)
 struct menu *mp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"reset_menu_to_default(mp)\",\"paramLine\":[\"struct menu *mp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     mp->base = mp->last = (x11_menu_item *) 0;
     mp->query = (const char *) 0;
     mp->gacc = (const char *) 0;
@@ -1289,6 +1414,10 @@ static void
 clear_old_menu(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"clear_old_menu(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct menu_info_t *menu_info = wp->menu_information;
 
     free_menu(&menu_info->curr_menu);
@@ -1306,6 +1435,10 @@ void
 create_menu_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_menu_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     wp->type = NHW_MENU;
     wp->menu_information =
         (struct menu_info_t *) alloc(sizeof(struct menu_info_t));
@@ -1325,6 +1458,10 @@ void
 destroy_menu_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_menu_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     clear_old_menu(wp); /* this will also destroy the widgets */
     free((genericptr_t) wp->menu_information);
     wp->menu_information = (struct menu_info_t *) 0;

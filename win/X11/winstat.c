@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winstat.c	$NHDT-Date: 1543447325 2018/11/28 23:22:05 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.20 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -126,6 +127,10 @@ condcolor(bm, bmarray)
 long bm;
 unsigned long *bmarray;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"condcolor(bm, bmarray)\",\"paramLine\":[\"unsigned long *bmarray;\",\"long bm;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
 
     if (bm && bmarray)
@@ -141,6 +146,10 @@ condattr(bm, bmarray)
 long bm;
 unsigned long *bmarray;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"condattr(bm, bmarray)\",\"paramLine\":[\"unsigned long *bmarray;\",\"long bm;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int attr = 0;
     int i;
 
@@ -173,6 +182,10 @@ unsigned long *bmarray;
 void
 X11_status_init()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_init()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
 #ifdef STATUS_HILITES
     int i;
 
@@ -188,6 +201,10 @@ X11_status_init()
 void
 X11_status_finish()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_finish()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* nothing */
 }
 
@@ -198,6 +215,10 @@ const char *nm;
 const char *fmt;
 boolean enable;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_enablefield(fieldidx, nm, fmt, enable)\",\"paramLine\":[\"boolean enable;\",\"const char *fmt;\",\"const char *nm;\",\"int fieldidx;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     genl_status_enablefield(fieldidx, nm, fmt, enable);
 }
 
@@ -206,6 +227,10 @@ int
 cond_bm2idx(bm)
 unsigned long bm;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"cond_bm2idx(bm)\",\"paramLine\":[\"unsigned long bm;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     for (i = 0; i < 32; i++)
         if ((1 << i) == bm)
@@ -219,6 +244,10 @@ unsigned long bm;
 unsigned long *colormasks;
 const char *text;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"MaybeDisplayCond(bm, colormasks, text)\",\"paramLine\":[\"const char *text;\",\"unsigned long *colormasks;\",\"unsigned long bm;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int idx = cond_bm2idx(bm);
     Widget label;
     Arg args[10];
@@ -311,6 +340,10 @@ int fld, chg UNUSED, percent, color;
 genericptr_t ptr;
 unsigned long *colormasks;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_update_tty(fld, ptr, chg, percent, color, colormasks)\",\"paramLine\":[\"unsigned long *colormasks;\",\"genericptr_t ptr;\",\"int fld, chg UNUSED, percent, color;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     static boolean oncearound = FALSE; /* prevent premature partial display */
     long *condptr = (long *) ptr;
     int coloridx = NO_COLOR;
@@ -512,6 +545,10 @@ int fld, chg UNUSED, percent UNUSED, color UNUSED;
 genericptr_t ptr;
 unsigned long *colormasks UNUSED;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_update_fancy(fld, ptr, chg, percent, color, colormasks)\",\"paramLine\":[\"unsigned long *colormasks UNUSED;\",\"genericptr_t ptr;\",\"int fld, chg UNUSED, percent UNUSED, color UNUSED;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     static const struct {
         int bl, ff;
     } bl_to_fancyfield[] = {
@@ -586,6 +623,10 @@ int fld, chg UNUSED, percent UNUSED, color;
 genericptr_t ptr;
 unsigned long *colormasks;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_status_update(fld, ptr, chg, percent, color, colormasks)\",\"paramLine\":[\"unsigned long *colormasks;\",\"genericptr_t ptr;\",\"int fld, chg UNUSED, percent UNUSED, color;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (appResources.fancy_status)
         X11_status_update_fancy(fld, ptr, chg, percent, color, colormasks);
     else
@@ -596,6 +637,10 @@ Widget
 create_tty_status(parent, top)
 Widget parent, top;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Widget\",\"functionMain\":\"create_tty_status(parent, top)\",\"paramLine\":[\"Widget parent, top;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form; /* The form that surrounds everything. */
     Widget w;
     Arg args[16];
@@ -701,6 +746,10 @@ struct xwindow *wp; /* window pointer */
 boolean create_popup UNUSED;
 Widget parent;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_status_window_tty(wp, create_popup, parent)\",\"paramLine\":[\"Widget parent;\",\"boolean create_popup UNUSED;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[10];
     Cardinal num_args;
 
@@ -717,6 +766,10 @@ void
 destroy_status_window_tty(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_status_window_tty(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* If status_information is defined, then it a "text" status window. */
     if (wp->status_information) {
         if (wp->popup) {
@@ -738,6 +791,10 @@ adjust_status_tty(wp, str)
 struct xwindow *wp UNUSED;
 const char *str UNUSED;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"adjust_status_tty(wp, str)\",\"paramLine\":[\"const char *str UNUSED;\",\"struct xwindow *wp UNUSED;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* nothing */
 }
 
@@ -747,6 +804,10 @@ struct xwindow *wp; /* window pointer */
 boolean create_popup;
 Widget parent;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_status_window(wp, create_popup, parent)\",\"paramLine\":[\"Widget parent;\",\"boolean create_popup;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     xw_status_win = wp;
     if (appResources.fancy_status)
         create_status_window_fancy(wp, create_popup, parent);
@@ -758,6 +819,10 @@ void
 destroy_status_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_status_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (appResources.fancy_status)
         destroy_status_window_fancy(wp);
     else
@@ -769,6 +834,10 @@ adjust_status(wp, str)
 struct xwindow *wp;
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"adjust_status(wp, str)\",\"paramLine\":[\"const char *str;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (appResources.fancy_status)
         adjust_status_fancy(wp, str);
     else
@@ -784,6 +853,10 @@ struct xwindow *wp; /* window pointer */
 boolean create_popup;
 Widget parent;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_status_window_fancy(wp, create_popup, parent)\",\"paramLine\":[\"Widget parent;\",\"boolean create_popup;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XFontStruct *fs;
     Arg args[8];
     Cardinal num_args;
@@ -873,6 +946,10 @@ void
 destroy_status_window_fancy(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_status_window_fancy(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* If status_information is defined, then it a "text" status window. */
     if (wp->status_information) {
         if (wp->popup) {
@@ -900,6 +977,10 @@ adjust_status_fancy(wp, str)
 struct xwindow *wp;
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"adjust_status_fancy(wp, str)\",\"paramLine\":[\"const char *str;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     Cardinal num_args;
 
@@ -1010,6 +1091,10 @@ static struct X_status_value shown_stats[NUM_STATS] = {
 void
 null_out_status()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"null_out_status()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     struct X_status_value *sv;
     Arg args[1];
@@ -1038,6 +1123,10 @@ static void
 hilight_label(w)
 Widget w; /* label widget */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"hilight_label(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     Pixel fg, bg;
 
@@ -1055,6 +1144,10 @@ update_val(attr_rec, new_value)
 struct X_status_value *attr_rec;
 long new_value;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"update_val(attr_rec, new_value)\",\"paramLine\":[\"long new_value;\",\"struct X_status_value *attr_rec;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char buf[BUFSZ];
     Arg args[4];
 
@@ -1277,6 +1370,10 @@ static void
 update_fancy_status_field(i)
 int i;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"update_fancy_status_field(i)\",\"paramLine\":[\"int i;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct X_status_value *sv = &shown_stats[i];
     long val;
 
@@ -1429,6 +1526,10 @@ static void
 update_fancy_status(wp)
 struct xwindow *wp UNUSED;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"update_fancy_status(wp)\",\"paramLine\":[\"struct xwindow *wp UNUSED;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
 
     /*if (wp->cursy != 0)
@@ -1445,6 +1546,10 @@ struct xwindow *wp UNUSED;
 void
 check_turn_events()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"check_turn_events()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     struct X_status_value *sv;
 
@@ -1470,6 +1575,10 @@ static const char *
 width_string(sv_index)
 int sv_index;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static const char *\",\"functionMain\":\"width_string(sv_index)\",\"paramLine\":[\"int sv_index;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     switch (sv_index) {
     case F_DUMMY:
         return " ";
@@ -1536,6 +1645,10 @@ Widget parent;
 struct X_status_value *sv;
 int sv_index;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"create_widget(parent, sv, sv_index)\",\"paramLine\":[\"int sv_index;\",\"struct X_status_value *sv;\",\"Widget parent;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[4];
     Cardinal num_args;
 
@@ -1582,6 +1695,10 @@ get_widths(sv, width1p, width2p)
 struct X_status_value *sv;
 int *width1p, *width2p;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"get_widths(sv, width1p, width2p)\",\"paramLine\":[\"int *width1p, *width2p;\",\"struct X_status_value *sv;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
     Dimension width;
 
@@ -1607,6 +1724,10 @@ set_widths(sv, width1, width2)
 struct X_status_value *sv;
 int width1, width2;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"set_widths(sv, width1, width2)\",\"paramLine\":[\"int width1, width2;\",\"struct X_status_value *sv;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[1];
 
     switch (sv->type) {
@@ -1630,6 +1751,10 @@ const char *name;
 Widget parent, top, left;
 int *col_indices;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static Widget\",\"functionMain\":\"init_column(name, parent, top, left, col_indices)\",\"paramLine\":[\"int *col_indices;\",\"Widget parent, top, left;\",\"const char *name;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form;
     Arg args[4];
     Cardinal num_args;
@@ -1724,6 +1849,10 @@ static Widget
 init_info_form(parent, top, left)
 Widget parent, top, left;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static Widget\",\"functionMain\":\"init_info_form(parent, top, left)\",\"paramLine\":[\"Widget parent, top, left;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form, col1;
     struct X_status_value *sv_name, *sv_dlevel;
     Arg args[6];
@@ -1784,6 +1913,10 @@ Widget parent, top, left;
 static void
 fixup_cond_widths()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"fixup_cond_widths()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int pass, i, *ip, w1, w2;
 
     w1 = w2 = 0;
@@ -1822,6 +1955,10 @@ static Widget
 create_fancy_status(parent, top)
 Widget parent, top;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static Widget\",\"functionMain\":\"create_fancy_status(parent, top)\",\"paramLine\":[\"Widget parent, top;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget form; /* The form that surrounds everything. */
     Widget w;
     Arg args[8];
@@ -1859,6 +1996,10 @@ static void
 destroy_fancy_status(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"destroy_fancy_status(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i;
     struct X_status_value *sv;
 

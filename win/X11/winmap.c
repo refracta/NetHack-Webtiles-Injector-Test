@@ -1,4 +1,4 @@
-#include <webtiles.h>
+#include "webtiles.h"
 /* NetHack 3.6	winmap.c	$NHDT-Date: 1455389908 2016/02/13 18:58:28 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.29 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -77,6 +77,10 @@ xchar x, y;
 int glyph;
 int bkglyph UNUSED;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_print_glyph(window, x, y, glyph, bkglyph)\",\"paramLine\":[\"int bkglyph UNUSED;\",\"int glyph;\",\"xchar x, y;\",\"winid window;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info;
     boolean update_bbox = FALSE;
 
@@ -156,6 +160,10 @@ X11_cliparound(x, y)
 int x UNUSED;
 int y UNUSED;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_cliparound(x, y)\",\"paramLine\":[\"int y UNUSED;\",\"int x UNUSED;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return;
 }
 #endif /* CLIPPING */
@@ -195,6 +203,10 @@ struct tile_annotation *annotation;
 char *filename;
 Pixel colorpixel;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"init_annotation(annotation, filename, colorpixel)\",\"paramLine\":[\"Pixel colorpixel;\",\"char *filename;\",\"struct tile_annotation *annotation;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Display *dpy = XtDisplay(toplevel);
 
     if (0 != XReadBitmapFile(dpy, XtWindow(toplevel), filename,
@@ -222,6 +234,10 @@ Pixel colorpixel;
 void
 post_process_tiles()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"post_process_tiles()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Display *dpy = XtDisplay(toplevel);
     unsigned int width, height;
 
@@ -260,6 +276,10 @@ static boolean
 init_tiles(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static boolean\",\"functionMain\":\"init_tiles(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
 #ifdef USE_XPM
     XpmAttributes attributes;
     int errorcode;
@@ -573,6 +593,10 @@ void
 check_cursor_visibility(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"check_cursor_visibility(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg arg[2];
     Widget viewport, horiz_sb, vert_sb;
     float top, shown, cursor_middle;
@@ -725,6 +749,10 @@ static void
 map_check_size_change(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"map_check_size_change(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info = wp->map_information;
     Arg arg[2];
     Dimension new_width, new_height;
@@ -784,6 +812,10 @@ const char *resource_name;
 Pixel bgpixel;
 GC *regular, *inverse;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"set_gc(w, font, resource_name, bgpixel, regular, inverse)\",\"paramLine\":[\"GC *regular, *inverse;\",\"Pixel bgpixel;\",\"const char *resource_name;\",\"Font font;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XGCValues values;
     XtGCMask mask = GCFunction | GCForeground | GCBackground | GCFont;
     Pixel curpixel;
@@ -816,6 +848,10 @@ get_text_gc(wp, font)
 struct xwindow *wp;
 Font font;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"get_text_gc(wp, font)\",\"paramLine\":[\"Font font;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info = wp->map_information;
     Pixel bgpixel;
     Arg arg[1];
@@ -860,6 +896,10 @@ static void
 display_cursor(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"display_cursor(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* Redisplay the cursor location inverted. */
     map_update(wp, wp->cursy, wp->cursy, wp->cursx, wp->cursx, TRUE);
 }
@@ -872,6 +912,10 @@ void
 display_map_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"display_map_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     register int row;
     struct map_info_t *map_info = wp->map_information;
 
@@ -921,6 +965,10 @@ static void
 map_all_stone(map_info)
 struct map_info_t *map_info;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"map_all_stone(map_info)\",\"paramLine\":[\"struct map_info_t *map_info;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int x, y;
     unsigned short stone = cmap_to_glyph(S_stone);
 
@@ -941,6 +989,10 @@ void
 clear_map_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"clear_map_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info = wp->map_information;
 
     /* update both tile and text backing store, then update */
@@ -969,6 +1021,10 @@ static void
 get_char_info(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"get_char_info(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XFontStruct *fs;
     struct map_info_t *map_info = wp->map_information;
     struct text_map_info_t *text_map = &map_info->text_map;
@@ -1020,6 +1076,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"map_input(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XKeyEvent *key;
     XButtonEvent *button;
     boolean meta = FALSE;
@@ -1120,6 +1180,10 @@ int x;
 int y;
 unsigned int button;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"set_button_values(w, x, y, button)\",\"paramLine\":[\"unsigned int button;\",\"int y;\",\"int x;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
     struct map_info_t *map_info;
 
@@ -1155,6 +1219,10 @@ Widget w;
 XtPointer client_data; /* unused */
 XtPointer widget_data; /* expose event from Window widget */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"map_exposed(w, client_data, widget_data)\",\"paramLine\":[\"XtPointer widget_data;\",\"XtPointer client_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int x, y;
     struct xwindow *wp;
     struct map_info_t *map_info;
@@ -1241,6 +1309,10 @@ struct xwindow *wp;
 int start_row, stop_row, start_col, stop_col;
 boolean inverted;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"map_update(wp, start_row, stop_row, start_col, stop_col, inverted)\",\"paramLine\":[\"boolean inverted;\",\"int start_row, stop_row, start_col, stop_col;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int win_start_row, win_start_col;
     struct map_info_t *map_info = wp->map_information;
     int row;
@@ -1272,6 +1344,8 @@ boolean inverted;
             for (cur_col = start_col; cur_col <= stop_col; cur_col++) {
                 int glyph = tile_map->glyphs[row][cur_col].glyph;
                 int tile = glyph2tile[glyph];
+
+
                 int src_x, src_y;
                 int dest_x = cur_col * tile_map->square_width;
                 int dest_y = row * tile_map->square_height;
@@ -1282,10 +1356,13 @@ boolean inverted;
                           tile_map->black_gc, /* no grapics_expose */
                           src_x, src_y, tile_width, tile_height,
                           dest_x, dest_y);
-						  
-                char updateTile[8192];
-                sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", tile, cur_col, row);
-                sendMsg(updateTile);
+
+                int realX = (tile % TILES_PER_ROW);
+                int realY = (tile / TILES_PER_ROW);
+                char msg[8192];
+                sprintf(msg, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", tile, cur_col, row);
+                sendMsg(msg);
+
 
                 if (glyph_is_pet(glyph) && iflags.hilite_pet) {
                     /* draw pet annotation (a heart) */
@@ -1417,6 +1494,10 @@ set_map_size(wp, cols, rows)
 struct xwindow *wp;
 Dimension cols, rows;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"set_map_size(wp, cols, rows)\",\"paramLine\":[\"Dimension cols, rows;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[4];
     Cardinal num_args;
 
@@ -1438,6 +1519,10 @@ static void
 init_text(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"init_text(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info = wp->map_information;
     struct text_map_info_t *text_map = &map_info->text_map;
 
@@ -1468,6 +1553,10 @@ struct xwindow *wp;
 boolean create_popup; /* parent is a popup shell that we create */
 Widget parent;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_map_window(wp, create_popup, parent)\",\"paramLine\":[\"Widget parent;\",\"boolean create_popup;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info; /* map info pointer */
     Widget map, viewport;
     Arg args[16];
@@ -1596,6 +1685,10 @@ void
 destroy_map_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_map_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct map_info_t *map_info = wp->map_information;
 
     if (wp->popup)
@@ -1645,6 +1738,10 @@ void
 pkey(k)
 int k;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"pkey(k)\",\"paramLine\":[\"int k;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     printf("key = '%s%c'\n", (k < 32) ? "^" : "", (k < 32) ? '@' + k : k);
 }
 #endif  /***0***/
@@ -1657,48 +1754,65 @@ int
 x_event(exit_condition)
 int exit_condition;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"x_event(exit_condition)\",\"paramLine\":[\"int exit_condition;\"]}");
+    /* Auto Generated Function Call Trace <End> */
     XEvent event;
     int retval = 0;
+    
     boolean keep_going = TRUE;
-
+    
     /* Hold globals so function is re-entrant */
     boolean hold_exit_x_event = exit_x_event;
-
+    
     click_button = NO_CLICK; /* reset click exit condition */
+    
     exit_x_event = FALSE;    /* reset callback exit condition */
+    
 
 
-	int code =  -1;
+    int code =  -1;
+
     /*
      * Loop until we get a sent event, callback exit, or are accepting key
      * press and button press events and we receive one.
      */
+    
     if ((exit_condition == EXIT_ON_KEY_PRESS
          || exit_condition == EXIT_ON_KEY_OR_BUTTON_PRESS) && incount)
         goto try_test;
 
     do {
+        
         if(XtAppPending(app_context)){
             usleep(1);
             XtAppNextEvent(app_context, &event);
             XtDispatchEvent(&event);
         }
 
+
     /* See if we can exit. */
     try_test:
         switch (exit_condition) {
         case EXIT_ON_SENT_EVENT: {
+            
             XAnyEvent *any = (XAnyEvent *) &event;
-
+            
             if (any->send_event) {
+                //sendDebugMsg(1);
                 retval = 0;
                 keep_going = FALSE;
             }
+            
             break;
         }
         case EXIT_ON_EXIT:
+            
+            //handleSocketAuto();
             code = getch_nb_by_webtiles();
             if(exit_x_event || code == 27) {
+             //if (code == 27) {
+                //sendDebugMsg(2);
                 incount = 0;
                 retval = 0;
                 keep_going = FALSE;
@@ -1717,13 +1831,14 @@ int exit_condition;
                 inptr = (inptr + 1) % INBUF_SIZE;
                 keep_going = FALSE;
             }
-			
-			code = getch_nb_by_webtiles();
+            
+            code = getch_nb_by_webtiles();
 
             if(code > -1){
                 retval = code;
                 keep_going = FALSE;
             }
+            
             break;
         case EXIT_ON_KEY_OR_BUTTON_PRESS:
             if (incount != 0 || click_button != NO_CLICK) {
@@ -1743,22 +1858,26 @@ int exit_condition;
                 inptr = (inptr + 1) % INBUF_SIZE;
                 keep_going = FALSE;
             }
-			code = getch_nb_by_webtiles();
+            
+            code = getch_nb_by_webtiles();
 
             if(code > -1){
                 retval = code;
                 keep_going = FALSE;
             }
+            
             break;
         default:
+            
             panic("x_event: unknown exit condition %d", exit_condition);
             break;
         }
     } while (keep_going);
-
+    
     /* Restore globals */
     exit_x_event = hold_exit_x_event;
-
+    
+    sendMsg("{\"msg\":\"functionEnd\",\"functionReturn\":\"int\",\"functionMain\":\"x_event(exit_condition)\",\"paramLine\":[\"int exit_condition;\"]}");
     return retval;
 }
 

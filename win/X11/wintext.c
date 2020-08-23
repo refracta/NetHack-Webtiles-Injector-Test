@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	wintext.c	$NHDT-Date: 1552422654 2019/03/12 20:30:54 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.18 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -59,6 +60,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"delete_text(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
     struct text_info_t *text_info;
 
@@ -91,6 +96,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"dismiss_text(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct xwindow *wp;
     struct text_info_t *text_info;
 
@@ -118,6 +127,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"key_dismiss_text(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch = key_event_to_char((XKeyEvent *) event);
     if (ch)
         dismiss_text(w, event, params, num_params);
@@ -132,6 +145,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"rip_dismiss_text(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     dismiss_text(XtParent(w), event, params, num_params);
 }
 #endif
@@ -143,6 +160,10 @@ struct xwindow *wp;
 int attr; /* currently unused */
 const char *str;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"add_to_text_window(wp, attr, str)\",\"paramLine\":[\"const char *str;\",\"int attr;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct text_info_t *text_info = wp->text_information;
     int width;
 
@@ -161,6 +182,10 @@ display_text_window(wp, blocking)
 struct xwindow *wp;
 boolean blocking;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"display_text_window(wp, blocking)\",\"paramLine\":[\"boolean blocking;\",\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct text_info_t *text_info;
     Arg args[8];
     Cardinal num_args;
@@ -261,6 +286,10 @@ void
 create_text_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"create_text_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     struct text_info_t *text_info;
     Arg args[8];
     Cardinal num_args;
@@ -344,6 +373,10 @@ void
 destroy_text_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"destroy_text_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* Don't need to pop down, this only called from dismiss_text(). */
 
     struct text_info_t *text_info = wp->text_information;
@@ -368,6 +401,10 @@ void
 clear_text_window(wp)
 struct xwindow *wp;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"clear_text_window(wp)\",\"paramLine\":[\"struct xwindow *wp;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     clear_text_buffer(&wp->text_information->text);
 }
 
@@ -381,6 +418,10 @@ struct text_buffer *tb;
 const char *str;
 boolean concat;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"append_text_buffer(tb, str, concat)\",\"paramLine\":[\"boolean concat;\",\"const char *str;\",\"struct text_buffer *tb;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char *copy;
     int length;
 
@@ -439,6 +480,10 @@ void
 init_text_buffer(tb)
 struct text_buffer *tb;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"init_text_buffer(tb)\",\"paramLine\":[\"struct text_buffer *tb;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     tb->text = (char *) alloc(START_SIZE);
     tb->text[0] = '\0';
     tb->text_size = START_SIZE;
@@ -451,6 +496,10 @@ void
 clear_text_buffer(tb)
 struct text_buffer *tb;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"clear_text_buffer(tb)\",\"paramLine\":[\"struct text_buffer *tb;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     tb->text_last = 0;
     tb->text[0] = '\0';
     tb->num_lines = 0;
@@ -461,6 +510,10 @@ void
 free_text_buffer(tb)
 struct text_buffer *tb;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"free_text_buffer(tb)\",\"paramLine\":[\"struct text_buffer *tb;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     free(tb->text);
     tb->text = (char *) 0;
     tb->text_size = 0;
@@ -485,6 +538,10 @@ static char rip_line[YEAR_LINE + 1][STONE_LINE_LEN + 1];
 void
 calculate_rip_text(int how, time_t when)
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"calculate_rip_text(int how, time_t when)\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* Follows same algorithm as genl_outrip() */
 
     char buf[BUFSZ];
@@ -537,6 +594,10 @@ Widget w;
 XtPointer client_data UNUSED;
 XtPointer widget_data; /* expose event from Window widget */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"rip_exposed(w, client_data, widget_data)\",\"paramLine\":[\"XtPointer widget_data;\",\"XtPointer client_data UNUSED;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XExposeEvent *event = (XExposeEvent *) widget_data;
     Display *dpy = XtDisplay(w);
     Arg args[8];
@@ -593,6 +654,10 @@ XtPointer widget_data; /* expose event from Window widget */
 static Widget
 create_ripout_widget(Widget parent)
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static Widget\",\"functionMain\":\"create_ripout_widget(Widget parent)\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget imageport;
     Arg args[16];
     Cardinal num_args;

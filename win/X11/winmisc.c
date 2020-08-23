@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	winmisc.c	$NHDT-Date: 1554135506 2019/04/01 16:18:26 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.44 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -114,6 +115,10 @@ XtPointer
 i2xtp(i)
 int i;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"XtPointer\",\"functionMain\":\"i2xtp(i)\",\"paramLine\":[\"int i;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return (XtPointer) (ptrdiff_t) i;
 }
 
@@ -121,6 +126,10 @@ int
 xtp2i(x)
 XtPointer x;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"xtp2i(x)\",\"paramLine\":[\"XtPointer x;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return (int) (ptrdiff_t) x;
 }
 
@@ -131,6 +140,10 @@ ps_quit(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"ps_quit(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client_data);
     nhUse(call_data);
@@ -145,6 +158,10 @@ ps_random(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"ps_random(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client_data);
     nhUse(call_data);
@@ -159,6 +176,10 @@ ps_select(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"ps_select(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(call_data);
 
@@ -174,6 +195,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"ps_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch, *mark;
     char rolechars[QBUFSZ];
     int i;
@@ -224,6 +249,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"race_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch, *mark;
     char racechars[QBUFSZ];
     int i;
@@ -272,6 +301,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"gend_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch, *mark;
     static char gendchars[] = "mf";
 
@@ -309,6 +342,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"algn_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch, *mark;
     static char algnchars[] = "LNC";
 
@@ -351,6 +388,10 @@ Widget plsel_btn_play;
 void
 plsel_dialog_acceptvalues()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_dialog_acceptvalues()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     String s;
 
@@ -378,6 +419,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_quit(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(event);
     nhUse(params);
@@ -395,6 +440,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_play(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     Boolean state;
 
@@ -422,6 +471,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_randomize(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(event);
     nhUse(params);
@@ -435,6 +488,10 @@ void
 plsel_set_play_button(state)
 boolean state;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_set_play_button(state)\",\"paramLine\":[\"boolean state;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
 
     XtSetArg(args[0], nhStr(XtNsensitive), !state);
@@ -445,6 +502,10 @@ void
 plsel_set_sensitivities(setcurr)
 boolean setcurr;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"plsel_set_sensitivities(setcurr)\",\"paramLine\":[\"boolean setcurr;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     int j, valid;
     int c = 0;
@@ -498,6 +559,10 @@ boolean setcurr;
 void
 X11_player_selection_randomize()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_player_selection_randomize()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int nrole = plsel_n_roles;
     int nrace = plsel_n_races;
     int ro, ra, a, g;
@@ -585,6 +650,10 @@ X11_player_selection_randomize()
 void
 X11_player_selection_setupOthers()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_player_selection_setupOthers()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     int ra = xtp2i(XawToggleGetCurrent(plsel_race_radios[0])) - 1;
     int ro = xtp2i(XawToggleGetCurrent(plsel_role_radios[0])) - 1;
@@ -633,6 +702,10 @@ racetoggleCallback(w, client, call)
 Widget w;
 XtPointer client, call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"racetoggleCallback(w, client, call)\",\"paramLine\":[\"XtPointer client, call;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     int j, valid;
     int c = 0;
@@ -674,6 +747,10 @@ roletoggleCallback(w, client, call)
 Widget w;
 XtPointer client, call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"roletoggleCallback(w, client, call)\",\"paramLine\":[\"XtPointer client, call;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Arg args[2];
     int j, valid;
     int c = 0;
@@ -715,6 +792,10 @@ gendertoggleCallback(w, client, call)
 Widget w;
 XtPointer client, call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"gendertoggleCallback(w, client, call)\",\"paramLine\":[\"XtPointer client, call;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i, r = xtp2i(XawToggleGetCurrent(plsel_gend_radios[0])) - 1;
 
     nhUse(w);
@@ -739,6 +820,10 @@ aligntoggleCallback(w, client, call)
 Widget w;
 XtPointer client, call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"aligntoggleCallback(w, client, call)\",\"paramLine\":[\"XtPointer client, call;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int r = xtp2i(XawToggleGetCurrent(plsel_align_radios[0])) - 1;
 
     nhUse(w);
@@ -754,6 +839,10 @@ Widget w;
 XtPointer client;
 XtPointer call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"plsel_random_btn_callback(w, client, call)\",\"paramLine\":[\"XtPointer call;\",\"XtPointer client;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client);
     nhUse(call);
@@ -767,6 +856,10 @@ Widget w;
 XtPointer client;
 XtPointer call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"plsel_play_btn_callback(w, client, call)\",\"paramLine\":[\"XtPointer call;\",\"XtPointer client;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client);
     nhUse(call);
@@ -781,6 +874,10 @@ Widget w;
 XtPointer client;
 XtPointer call;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"plsel_quit_btn_callback(w, client, call)\",\"paramLine\":[\"XtPointer call;\",\"XtPointer client;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client);
     nhUse(call);
@@ -793,6 +890,10 @@ Widget
 X11_create_player_selection_name(form)
 Widget form;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Widget\",\"functionMain\":\"X11_create_player_selection_name(form)\",\"paramLine\":[\"Widget form;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget namelabel, name_vp, name_form;
     Arg args[10];
     Cardinal num_args;
@@ -855,6 +956,10 @@ Widget form;
 void
 X11_player_selection_dialog()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_player_selection_dialog()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget popup, popup_vp;
     Widget form;
     Widget name_vp;
@@ -1281,6 +1386,10 @@ X11_player_selection_dialog()
 void
 X11_player_selection_prompts()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_player_selection_prompts()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int num_roles, num_races, num_gends, num_algns, i, availcount, availindex;
     Widget popup, player_form;
     const char **choices;
@@ -1567,6 +1676,10 @@ X11_player_selection_prompts()
 void
 X11_player_selection()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"X11_player_selection()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (iflags.wc_player_selection == VIA_DIALOG) {
         if (!*plname) {
 #ifdef UNIX
@@ -1589,6 +1702,10 @@ X11_player_selection()
 int
 X11_get_ext_cmd()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"int\",\"functionMain\":\"X11_get_ext_cmd()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (iflags.extmenu != ec_full_list) {
         /* player has toggled the 'extmenu' option, toss the old widgets */
         if (extended_commands)
@@ -1616,6 +1733,10 @@ X11_get_ext_cmd()
 void
 release_extended_cmds()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"release_extended_cmds()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (extended_commands) {
         XtDestroyWidget(extended_command_popup), extended_command_popup = 0;
         free((genericptr_t) extended_commands), extended_commands = 0;
@@ -1633,6 +1754,10 @@ extend_select(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"extend_select(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int selected = (int) (ptrdiff_t) client_data;
 
     nhUse(w);
@@ -1661,6 +1786,10 @@ extend_dismiss(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"extend_dismiss(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client_data);
     nhUse(call_data);
@@ -1674,6 +1803,10 @@ extend_help(w, client_data, call_data)
 Widget w;
 XtPointer client_data, call_data;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"extend_help(w, client_data, call_data)\",\"paramLine\":[\"XtPointer client_data, call_data;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(client_data);
     nhUse(call_data);
@@ -1690,6 +1823,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"ec_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     if (w == extended_command_popup) {
         ec_dismiss();
     } else {
@@ -1705,6 +1842,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"popup_delete(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(event);
     nhUse(params);
     nhUse(num_params);
@@ -1717,6 +1858,10 @@ Cardinal *num_params;
 static void
 ec_dismiss()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"ec_dismiss()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* unselect while still visible */
     if (extended_cmd_selected >= 0)
         swap_fg_bg(extended_commands[extended_cmd_selected]);
@@ -1732,6 +1877,10 @@ static void
 ec_scroll_to_view(ec_indx)
 int ec_indx; /* might be greater than extended_cmd_selected */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"ec_scroll_to_view(ec_indx)\",\"paramLine\":[\"int ec_indx;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget viewport, scrollbar, tmpw;
     Arg args[5];
     Cardinal num_args;
@@ -1836,6 +1985,10 @@ static boolean
 ignore_extcmd(idx)
 int idx;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static boolean\",\"functionMain\":\"ignore_extcmd(idx)\",\"paramLine\":[\"int idx;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     /* #shell or #suspect might not be available;
        'extmenu' option controls whether we show full list
        or just the traditional extended commands */
@@ -1855,6 +2008,10 @@ XEvent *event;
 String *params;
 Cardinal *num_params;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"void\",\"functionMain\":\"ec_key(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     char ch;
     int i, pass;
     float shown, top;
@@ -1973,6 +2130,10 @@ Cardinal *num_params;
 static void
 init_extended_commands_popup()
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"init_extended_commands_popup()\",\"paramLine\":[]}");
+    /* Auto Generated Function Call Trace <End> */
+
     int i, j, num_commands, ignore_cmds = 0;
 
     /* count commands */
@@ -2039,6 +2200,10 @@ Widget **command_widgets;
 XtCallbackProc name_callback;
 Widget *formp; /* return */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"left_callback, right_name, right_callback, num_names, widget_names,\",\"functionMain\":\"command_widgets, name_callback, formp)\",\"paramLine\":[\"Widget *formp;\",\"XtCallbackProc name_callback;\",\"Widget **command_widgets;\",\"const char **widget_names;\",\"int num_names;\",\"XtCallbackProc right_callback;\",\"const char *right_name;\",\"XtCallbackProc left_callback;\",\"const char *left_name;\",\"const char *popup_translations;\",\"const char *popup_label;\",\"const char *popup_name;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     Widget popup, popform, form, label, above, left, right, view;
     Widget *commands, *curr;
     int i;

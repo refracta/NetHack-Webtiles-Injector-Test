@@ -1,3 +1,4 @@
+#include "webtiles.h"
 /* NetHack 3.6	Window.c	$NHDT-Date: 1432512808 2015/05/25 00:13:28 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /* Copyright (c) Dean Luick, 1992				  */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -96,6 +97,10 @@ XEvent *event;        /* unused */
 String *params;       /* unused */
 Cardinal *num_params; /* unused */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"no_op(w, event, params, num_params)\",\"paramLine\":[\"Cardinal *num_params;\",\"String *params;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(w);
     nhUse(event);
     nhUse(params);
@@ -118,6 +123,10 @@ Widget w;
 XEvent *event;
 Region region; /* unused */
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"Redisplay(w, event, region)\",\"paramLine\":[\"Region region;\",\"XEvent *event;\",\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     nhUse(region);
 
     /* This isn't correct - we need to call the callback with region. */
@@ -129,6 +138,10 @@ static void
 Resize(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"static void\",\"functionMain\":\"Resize(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     XtCallCallbacks(w, XtNresizeCallback, (XtPointer) 0);
 }
 
@@ -176,6 +189,10 @@ Font
 WindowFont(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"Font\",\"functionMain\":\"WindowFont(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return ((WindowWidget) w)->window.font->fid;
 }
 
@@ -183,5 +200,9 @@ XFontStruct *
 WindowFontStruct(w)
 Widget w;
 {
+    /* Auto Generated Function Call Trace <Start> */
+    sendMsg("{\"msg\":\"functionCall\",\"functionReturn\":\"XFontStruct *\",\"functionMain\":\"WindowFontStruct(w)\",\"paramLine\":[\"Widget w;\"]}");
+    /* Auto Generated Function Call Trace <End> */
+
     return ((WindowWidget) w)->window.font;
 }
