@@ -1,4 +1,3 @@
 #!/bin/bash
 
-
-./devinstall-x11.sh && ./dev/nethack.sh
+./dev/install-x11.sh && ./dev/run-nethack.sh

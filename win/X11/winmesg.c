@@ -247,6 +247,9 @@ append_message(wp, str)
 struct xwindow *wp;
 const char *str;
 {
+	char appendMsg[8192];
+    sprintf(appendMsg, "{\"msg\":\"putstr\",\"str\":\"%s\"}", str);
+    sendMsg(appendMsg);
     char *mark, *remainder, buf[BUFSZ];
 
     if (!str)

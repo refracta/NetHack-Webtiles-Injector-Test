@@ -7,7 +7,7 @@ sudo docker run -it \
     -e DISPLAY=unix$DISPLAY \
     -v /tmp:/tmp \
     -v "$PWD":/usr/src/nethack \
-	-p 80:80
+	-p 80:80 \
     --name nethack-webtiles-dev \
     emalron/nethack \
     bash
