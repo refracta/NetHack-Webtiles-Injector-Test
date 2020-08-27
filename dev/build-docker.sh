@@ -1,5 +1,5 @@
 #!/bin/bash
-
+git clone https://github.com/refracta/NetHack-Webtiles server
 xhost +local:docker
 sudo docker build -t emalron/nethack ./dev
 mkdir server
