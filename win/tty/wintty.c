@@ -3404,9 +3404,11 @@ int bkglyph UNUSED;
 
     print_vt_code3(AVTC_GLYPH_START, glyph2tile[glyph], special);
 
+    #if defined(WEBTILES_GRAPHICS)
     char updateTile[8192];
     sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", glyph2tile[glyph], x, y);
     sendMsg(updateTile);
+    #endif
 
 #ifndef NO_TERMS
     if (ul_hack && ch == '_') { /* non-destructive underscore */
