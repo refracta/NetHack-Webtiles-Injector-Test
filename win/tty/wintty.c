@@ -40,8 +40,6 @@ extern void msmsg(const char *, ...);
 #endif
 #endif
 
-#ifdef WEBTILES_GRAPHICS
-extern short glyph2tile[];
 #ifdef TTY_TILES_ESCCODES
 extern short glyph2tile[];
 #define TILE_ANSI_COMMAND 'z'
@@ -3371,6 +3369,7 @@ int x, y;
  */
 #ifdef USE_TILES
 extern short glyph2tile[];
+#endif
 
 void
 tty_print_glyph(window, x, y, glyph, bkglyph)
