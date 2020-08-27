@@ -178,7 +178,7 @@ void initSocket() {
 
     sendInitMsg(sockfd, clientAddress);
 
-#if define(X11_GRAPHICS)
+#if defined(X11_GRAPHICS)
     startHandleSocketRunner();
 #endif
     /*
