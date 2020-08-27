@@ -3367,6 +3367,8 @@ int x, y;
  *  Since this is only called from show_glyph(), it is assumed that the
  *  position and glyph are always correct (checked there)!
  */
+#ifdef USE_TILES
+extern short glyph2tile[];
 
 void
 tty_print_glyph(window, x, y, glyph, bkglyph)
@@ -3375,11 +3377,9 @@ xchar x, y;
 int glyph;
 int bkglyph UNUSED;
 {
-	char msg[8192];
+    char msg[8192];
     sprintf(msg, "{\"msg\":\"print_glyph\",\"window\":%d, \"x\":%d, \"y\":%d, \"glyph\":%d, \"bkglyph\":%d}", window, x, y, glyph, bkglyph);
     sendMsg(msg);
-
-	
 	
     int ch;
     boolean reverse_on = FALSE;
@@ -3402,6 +3402,10 @@ int bkglyph UNUSED;
     tty_curs(window, x, y);
 
     print_vt_code3(AVTC_GLYPH_START, glyph2tile[glyph], special);
+
+    char updateTile[8192];
+    sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", glyph2tile[glyph], x, y);
+    sendMsg(updateTile);
 
 #ifndef NO_TERMS
     if (ul_hack && ch == '_') { /* non-destructive underscore */
