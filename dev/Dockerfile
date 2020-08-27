@@ -6,7 +6,7 @@ RUN apt-get -y update && \
         gcc git cmake bison flex gdb libxaw7-dev xfonts-utils libncurses5-dev nodejs npm tmux nano && \
         git clone https://github.com/json-c/json-c.git && \
         mkdir jsonc-build
-WORKDIR /usr/src/nethack-server
+WORKDIR /usr/src/nethack/server
 RUN npm install		
 WORKDIR /usr/src/jsonc-build
 RUN cmake ../json-c && \
