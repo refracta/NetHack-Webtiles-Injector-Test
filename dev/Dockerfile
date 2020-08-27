@@ -7,7 +7,7 @@ RUN apt-get -y update && \
         git clone https://github.com/json-c/json-c.git && \
         mkdir jsonc-build
 WORKDIR /usr/src/nethack/server
-RUN npm install		
+RUN npm install --no-bin-links
 WORKDIR /usr/src/jsonc-build
 RUN cmake ../json-c && \
         make install
