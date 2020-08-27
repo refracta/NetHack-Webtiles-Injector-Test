@@ -1,3 +1,3 @@
 #!/bin/bash
-npm install --prefix ./server
+npm install --no-bin-links --prefix ./server
 npm start --prefix ./server | tee ./server/latest.log
