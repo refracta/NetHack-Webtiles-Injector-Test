@@ -178,9 +178,9 @@ void initSocket() {
 
     sendInitMsg(sockfd, clientAddress);
 
-    if(THREAD_MODE) {
-        startHandleSocketRunner();
-    }
+#if define(X11_GRAPHICS)
+    startHandleSocketRunner();
+#endif
     /*
 		while (true) {
 			handleSocket(sockfd, clientAddress);
