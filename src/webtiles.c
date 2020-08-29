@@ -15,6 +15,8 @@
 #include <time.h>
 #include <unistd.h>
 #include <pthread.h>
+// 임시
+#include "hack.h"
 
 #define DEFAULT_SERVER_PATH "/tmp/nethack-webtiles-server"
 #define DEFAULT_CLIENT_PATH "/tmp/nethack-webtiles-client"
@@ -253,3 +255,17 @@ void stopHandleSocketRunner(){
     threadExit = true;
     threadId = pthread_join(thread, &threadReturn);
 }
+
+void menu_test() {
+    winid win;
+    anything any;
+    menu_item *pick_list = 0;
+
+    win = create_nhwindow(NHW_MENU);
+    any = zeroany;
+    any.a_char = '?';
+    add_menu(win, NO_GLYPH, &any, any.a_char, 'C', ATR_NONE, "[TEST] menu #1", MENU_UNSELECTED);
+    end_menu(win, "end_menu()");
+    select_menu(win, PICK_NONE, &pick_list);
+}
+

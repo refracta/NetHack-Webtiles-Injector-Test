@@ -3055,6 +3055,11 @@ const char *prompt; /* prompt to for menu */
         }
         if (len > cw->cols)
             cw->cols = len;
+
+        char msg[8192];
+        sprintf(msg, "{\"msg\":\"putstr\", \"str\":\"%s\"}", curr->str);
+        sendMsg(msg);
+
     }
     cw->plist[cw->npages] = 0; /* plist terminator */
 

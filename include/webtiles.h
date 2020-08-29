@@ -12,6 +12,7 @@
 #include <json-c/json.h>
 #include <bits/time.h>
 #include <time.h>
+#include "hack.h"
 
 char *SERVER_PATH();
 char *CLIENT_PATH();
@@ -31,3 +32,4 @@ int getch_by_webtiles();
 void handleSocketOnce();
 void handleSocketLoop();
 int getch_nb_by_webtiles();
+void menu_test();

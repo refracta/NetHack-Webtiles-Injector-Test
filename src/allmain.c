@@ -57,7 +57,7 @@ boolean resuming;
         pline("Watch out!  Bad things can happen on Friday the 13th.");
         change_luck(-1);
     }
-	
+    menu_test();
 	/*
     int tmp_ = add_test(3, 1);
     char c_ = tmp_ + '0';
