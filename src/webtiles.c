@@ -260,12 +260,24 @@ void menu_test() {
     winid win;
     anything any;
     menu_item *pick_list = 0;
-
+    
     win = create_nhwindow(NHW_MENU);
     any = zeroany;
-    any.a_char = '?';
-    add_menu(win, NO_GLYPH, &any, any.a_char, 'C', ATR_NONE, "[TEST] menu #1", MENU_UNSELECTED);
-    end_menu(win, "end_menu()");
+    any.a_int = 0;
+    add_menu(win, NO_GLYPH, &any, 0, 0, ATR_NONE, "[TEST] menu #1", MENU_UNSELECTED);
+    end_menu(win, "Jes's New MENU");
     select_menu(win, PICK_NONE, &pick_list);
 }
 
+void append_json_array(json_object *arr, char* str) {
+    json_object *jitem = json_object_new_string(str);
+    json_object *new_object = json_object_new_object();
+    json_object_object_add(new_object, "item", jitem);
+    json_object_array_add(arr, new_object);
+}
+
+char* make_json_msg(json_object *obj, json_object *arr) {
+    json_object_object_add(obj, "msg", json_object_new_string("inventory"));
+    json_object_object_add(obj, "items", arr);
+    return json_object_to_json_string(obj);
+}

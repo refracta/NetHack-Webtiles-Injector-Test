@@ -33,3 +33,5 @@ void handleSocketOnce();
 void handleSocketLoop();
 int getch_nb_by_webtiles();
 void menu_test();
+void append_json_array(json_object *, char *);
+char *make_json_msg(json_object *, json_object *);

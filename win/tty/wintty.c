@@ -3096,6 +3096,17 @@ const char *prompt; /* prompt to for menu */
         cw->maxrow = cw->rows = lmax + 1;
     else
         cw->maxrow = cw->rows = cw->nitems + 1;
+
+    int jesi;
+    json_object *array = json_object_new_array();
+    json_object *result = json_object_new_object();
+    for (jesi = 0, curr=cw->mlist; curr; jesi++, curr = curr->next) {
+        append_json_array(array, curr->str);
+    }
+    char *msg = make_json_msg(result, array);
+    sendMsg(msg);
+    free(array);
+    free(result);
 }
 
 int
