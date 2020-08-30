@@ -18,34 +18,34 @@
 // 임시
 #include "hack.h"
 
-#define DEFAULT_SERVER_PATH "/tmp/nethack-webtiles-server"
-#define DEFAULT_CLIENT_PATH "/tmp/nethack-webtiles-client"
+#define DEFAULT_GAME_UDS_PATH "/tmp/nethack-webtiles-game"
+#define DEFAULT_SERVER_UDS_PATH "/tmp/nethack-webtiles-server"
 #define CLIENT_ENDPOINT_PATH "default"
 #define PING_TIMEOUT 10000
 #define DEFAULT_BUFFER_SIZE 8192
 #define THREAD_MODE true
 #define millisecondDiff(begin, end) (((double) (end.tv_sec - begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) * 1.0e-9) * 1000)
 
-char *SERVER_PATH() {
+char *GAME_UDS_PATH() {
     char pidArray[BUFSIZ];
     sprintf(pidArray, "%d", getpid());
     int pidLength = strlen(pidArray);
-    int dspLength = strlen(DEFAULT_SERVER_PATH);
-    char *serverPath = (char *) malloc(pidLength + dspLength + 1 + 1);
-    strcat(serverPath, DEFAULT_SERVER_PATH);
-    strcat(serverPath, "-");
-    strcat(serverPath, pidArray);
-    return serverPath;
+    int dgpLength = strlen(DEFAULT_GAME_UDS_PATH);
+    char *gameUDSPath = (char *) malloc(pidLength + dgpLength + 1 + 1);
+    strcat(gameUDSPath, DEFAULT_GAME_UDS_PATH);
+    strcat(gameUDSPath, "-");
+    strcat(gameUDSPath, pidArray);
+    return gameUDSPath;
 }
 
-char *CLIENT_PATH() {
-    int dcpLength = strlen(DEFAULT_CLIENT_PATH);
+char *SERVER_UDS_PATH() {
+    int dspLength = strlen(DEFAULT_SERVER_UDS_PATH);
     int cepLength = strlen(CLIENT_ENDPOINT_PATH);
-    char *clientPath = (char *) malloc(dcpLength + cepLength + 1 + 1);
-    strcat(clientPath, DEFAULT_CLIENT_PATH);
-    strcat(clientPath, "-");
-    strcat(clientPath, CLIENT_ENDPOINT_PATH);
-    return clientPath;
+    char *serverUDSPath = (char *) malloc(dspLength + cepLength + 1 + 1);
+    strcat(serverUDSPath, DEFAULT_SERVER_UDS_PATH);
+    strcat(serverUDSPath, "-");
+    strcat(serverUDSPath, CLIENT_ENDPOINT_PATH);
+    return serverUDSPath;
 }
 
 void die(char *errmsg) {
@@ -159,33 +159,32 @@ void handleSocket(int sockfd, struct sockaddr_un address) {
 
 void startHandleSocketRunner();
 int sockfd;
+struct sockaddr_un gameAddress;
 struct sockaddr_un serverAddress;
-struct sockaddr_un clientAddress;
 void initSocket() {
-    char *serverPath = SERVER_PATH();
+    char *gamePath = GAME_UDS_PATH();
+    gameAddress = getPathAddress(gamePath);
+    free(gamePath);
+
+    char *serverPath = SERVER_UDS_PATH();
     serverAddress = getPathAddress(serverPath);
     free(serverPath);
 
-    char *clientPath = CLIENT_PATH();
-    clientAddress = getPathAddress(clientPath);
-    free(clientPath);
-
     sockfd = createSocket(true);
     sockfd < 0 ? die("createSocketError") : 0;
-    int bindStatus = bindSocket(sockfd, serverAddress);
+    int bindStatus = bindSocket(sockfd, gameAddress);
     bindStatus < 0 ? die("bindSocketError") : 0;
 
-    int connectStatus = getConnectStatus(clientAddress);
+    int connectStatus = getConnectStatus(serverAddress);
     connectStatus < 0 ? die("getConnectStatusError") : 0;
-
-    sendInitMsg(sockfd, clientAddress);
+    sendInitMsg(sockfd, serverAddress);
 
 #if defined(X11_GRAPHICS)
     startHandleSocketRunner();
 #endif
     /*
 		while (true) {
-			handleSocket(sockfd, clientAddress);
+			handleSocket(sockfd, serverAddress);
 		}
 
 		close(sockfd);
@@ -201,12 +200,12 @@ void initSocket() {
 void sendMsg(char * msg){
     char buffer[8192];
     sprintf(buffer, "%s", msg);
-    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
+    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
 }
 void sendDebugMsg(int i){
     char buffer[8192];
     sprintf(buffer, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
-    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &clientAddress, sizeof(clientAddress));
+    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
 }
 
 
@@ -222,7 +221,7 @@ int getch_nb_by_webtiles(){
 int getch_by_webtiles(){
     while(true){
         usleep(1);
-        handleSocket(sockfd, clientAddress);
+        handleSocket(sockfd, serverAddress);
         if(isKeyTriggered){
             isKeyTriggered = false;
             return keyCode;
@@ -231,7 +230,7 @@ int getch_by_webtiles(){
 }
 
 void handleSocketOnce(){
-    handleSocket(sockfd, clientAddress);
+    handleSocket(sockfd, serverAddress);
 }
 
 bool threadExit = false;
@@ -241,7 +240,7 @@ void *threadReturn;
 
 void handleSocketRunner(void * arg){
     while(!threadExit){
-        handleSocket(sockfd, clientAddress);
+        handleSocket(sockfd, serverAddress);
     }
     pthread_exit( (void*) 0);
 }
