@@ -2,6 +2,7 @@
 git clone https://github.com/refracta/NetHack-Webtiles server
 xhost +local:docker
 sudo docker build -t emalron/nethack ./dev
+sudo docker stop nethack-webtiles-dev &> /dev/null
 sudo docker rm nethack-webtiles-dev &> /dev/null
 sudo docker run -it \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
