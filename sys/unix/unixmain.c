@@ -291,6 +291,10 @@ char *argv[];
         program_state.preserve_locks = 0; /* after getlock() */
     }
 
+    char initGame[8192];
+    sprintf(initGame, "{\"msg\":\"init_game\",\"username\":\"%s\"}", plname);
+    sendMsg(initGame);
+
     if (*plname && (fd = restore_saved_game()) >= 0) {
         const char *fq_save = fqname(SAVEF, SAVEPREFIX, 1);
 
