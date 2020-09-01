@@ -1,30 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <sys/un.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
 
-#include <stdbool.h>
-// TODO BOOL 대체 논의
-#include <json-c/json.h>
-#include <bits/time.h>
-#include <time.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <time.h>
+#include <bits/time.h>
+
 #include <pthread.h>
-// 임시
+#include <json-c/json.h>
+
 #include "hack.h"
 
+#define STRING_BUFFER_SIZE 8192
+
+/* GAME PATH */
 #define DEFAULT_GAME_UDS_PATH "/tmp/nethack-webtiles-game"
 #define DEFAULT_SERVER_UDS_PATH "/tmp/nethack-webtiles-server"
 #define CLIENT_ENDPOINT_PATH "default"
-#define PING_TIMEOUT 10000
-#define DEFAULT_BUFFER_SIZE 8192
-#define THREAD_MODE true
-#define millisecondDiff(begin, end) (((double) (end.tv_sec - begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) * 1.0e-9) * 1000)
 
 char *GAME_UDS_PATH() {
     char pidArray[BUFSIZ];
@@ -48,31 +47,23 @@ char *SERVER_UDS_PATH() {
     return serverUDSPath;
 }
 
+/* CORE UTIL */
 void die(char *errmsg) {
     perror(errmsg);
     exit(1);
 }
 
-int getConnectStatus(struct sockaddr_un address) {
-    int sockfd = socket(AF_UNIX, SOCK_DGRAM, 0);
-    int connectStatus = connect(sockfd, (struct sockaddr *) &address, sizeof(address));
-    close(sockfd);
-    return connectStatus;
+void exitWithSave() {
+    dosave0();
+    nh_terminate(EXIT_SUCCESS);
 }
 
-struct sockaddr_un getPathAddress(char *path) {
-    struct sockaddr_un address;
-    memset(&address, '\0', sizeof(address));
-    address.sun_family = AF_UNIX;
-    strcpy(address.sun_path, path);
-    return address;
-}
-
-int createSocket(bool isNonBlock) {
+/* RAW UDS SOCKET */
+int createSocket(bool blocking) {
     int sockfd;
     sockfd = socket(AF_UNIX, SOCK_DGRAM, 0);
-    if (isNonBlock) {
-        int flag = fcntl(socket, F_GETFL, 0);
+    if (!blocking) {
+        int flag = fcntl(sockfd, F_GETFL, 0);
         fcntl(sockfd, F_SETFL, flag | O_NONBLOCK);
     }
     return sockfd;
@@ -83,84 +74,30 @@ int bindSocket(int sockfd, struct sockaddr_un address) {
     return bind(sockfd, (struct sockaddr *) &address, sizeof(address));
 }
 
-void sendInitMsg(int sockfd, struct sockaddr_un address) {
-    char initSocketMsg[BUFSIZ];
-    sprintf(initSocketMsg, "{\"msg\":\"init_socket\", \"pid\":%d}", getpid());
-
-    sendto(sockfd, (void *) &initSocketMsg, sizeof(initSocketMsg), 0, (struct sockaddr *) &address, sizeof(address));
+struct sockaddr_un getPathAddress(char *path) {
+    struct sockaddr_un address;
+    memset(&address, '\0', sizeof(address));
+    address.sun_family = AF_UNIX;
+    strcpy(address.sun_path, path);
+    return address;
 }
 
-bool isKeyTriggered = false;
-int keyCode = -1;
-void handleCore(int sockfd, struct sockaddr_un address, json_object *obj, char *msg) {
-    if (strcmp(msg, "key") == 0) {
-        json_object *keyObj = json_object_object_get(obj, "keyCode");
-        keyCode = json_object_get_int(keyObj);
-        isKeyTriggered = true;
-    } if (strcmp(msg, "debug") == 0) {
-
-    }  else {
-        // printf("Unknown Request!");
-    }
+int getConnectStatus(struct sockaddr_un address) {
+    int sockfd = socket(AF_UNIX, SOCK_DGRAM, 0);
+    int connectStatus = connect(sockfd, (struct sockaddr *) &address, sizeof(address));
+    close(sockfd);
+    return connectStatus;
 }
 
-// https://blog.habets.se/2010/09/gettimeofday-should-never-be-used-to-measure-time.html
-struct timespec lastReceivePingTime;
-struct timespec lastSendPingTime;
-const char PING_MSG[] = "{\"msg\":\"ping\"}";
-const char PONG_MSG[] = "{\"msg\":\"pong\"}";
-
-void handleMsg(int sockfd, struct sockaddr_un address, json_object *obj) {
-    json_object *msgObj = json_object_object_get(obj, "msg");
-    if (msgObj != NULL) {
-        char *msg = json_object_get_string(msgObj);
-        if (strcmp(msg, "init_socket_end") == 0) {
-            clock_gettime(CLOCK_MONOTONIC, &lastReceivePingTime);
-            clock_gettime(CLOCK_MONOTONIC, &lastSendPingTime);
-        } else if (strcmp(msg, "ping") == 0) {
-            clock_gettime(CLOCK_MONOTONIC, &lastReceivePingTime);
-            sendto(sockfd, (void *) &PONG_MSG, sizeof(PONG_MSG), 0, (struct sockaddr *) &address, sizeof(address));
-        } else if (strcmp(msg, "pong") == 0) {
-
-        } else if (strcmp(msg, "close") == 0) {
-            die("SafeExit");
-        } else {
-            handleCore(sockfd, address, obj, msg);
-        }
-    }
-}
-
-void handleSocket(int sockfd, struct sockaddr_un address) {
-    char receiveBuffer[DEFAULT_BUFFER_SIZE];
-    int addressSize = sizeof(address);
-    int recv = recvfrom(sockfd, (void *) &receiveBuffer, sizeof(receiveBuffer), 0, (struct sockaddr *) &address,
-                        &addressSize);
-    if (recv != -1) {
-        // printf("Receive(%d): %s\n", recv, receiveBuffer);
-        json_object *obj = json_tokener_parse(receiveBuffer);
-        if (obj != NULL) {
-            handleMsg(sockfd, address, obj);
-        } else {
-            perror("json_tokener_parse-Error");
-        }
-    }
-    struct timespec currentTime;
-    clock_gettime(CLOCK_MONOTONIC, &currentTime);
-
-    if (lastSendPingTime.tv_sec != 0 && millisecondDiff(lastSendPingTime, currentTime) >= PING_TIMEOUT / 3) {
-        sendto(sockfd, (void *) &PING_MSG, sizeof(PING_MSG), 0, (struct sockaddr *) &address, addressSize);
-        clock_gettime(CLOCK_MONOTONIC, &lastSendPingTime);
-    }
-
-    if (lastReceivePingTime.tv_sec != 0 && millisecondDiff(lastReceivePingTime, currentTime) >= PING_TIMEOUT) {
-        die("PingTimeoutError");
-    }
-}
-
-void startHandleSocketRunner();
+/* SOCKET INIT */
 int sockfd;
 struct sockaddr_un gameAddress;
 struct sockaddr_un serverAddress;
+
+void sendMsg(char *);
+
+void startHandleSocketRunner();
+
 void initSocket() {
     char *gamePath = GAME_UDS_PATH();
     gameAddress = getPathAddress(gamePath);
@@ -170,96 +107,214 @@ void initSocket() {
     serverAddress = getPathAddress(serverPath);
     free(serverPath);
 
-    sockfd = createSocket(true);
+    sockfd = createSocket(false);
     sockfd < 0 ? die("createSocketError") : 0;
     int bindStatus = bindSocket(sockfd, gameAddress);
     bindStatus < 0 ? die("bindSocketError") : 0;
 
     int connectStatus = getConnectStatus(serverAddress);
     connectStatus < 0 ? die("getConnectStatusError") : 0;
-    sendInitMsg(sockfd, serverAddress);
+
+    char initSocketMsg[STRING_BUFFER_SIZE];
+    sprintf(initSocketMsg, "{\"msg\":\"init_socket\", \"pid\":%d}", getpid());
+    sendMsg(initSocketMsg);
 
 #if defined(X11_GRAPHICS)
     startHandleSocketRunner();
 #endif
-    /*
-		while (true) {
-			handleSocket(sockfd, serverAddress);
-		}
-
-		close(sockfd);
-		exit(0);
-    */
 }
 
-/*
- *   char positionMessage[8192];
- *   sprintf(positionMessage, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
- */
-// TODO 속도 개선의 여지
-void sendMsg(char * msg){
-    char buffer[8192];
-    sprintf(buffer, "%s", msg);
-    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
-}
-void sendDebugMsg(int i){
-    char buffer[8192];
-    sprintf(buffer, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
-    sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
-}
+// queued send support
+json_object *sendQueue[BUFSIZ];
+int sendQueueIndex = 0;
 
-
-int getch_nb_by_webtiles(){
-    if(isKeyTriggered){
-        isKeyTriggered = false;
-        return keyCode;
+int addSendQueue(json_object *obj) {
+    if (sendQueueIndex < BUFSIZ) {
+        sendQueue[sendQueueIndex++] = obj;
+    } else {
+        die('sendQueueOverflowError');
     }
-    return -1;
 }
 
-
-int getch_by_webtiles(){
-    while(true){
+// sendto wrapper
+void sendMsg(char *msg) {
+    char buffer[STRING_BUFFER_SIZE];
+    sprintf(buffer, "%s", msg);
+    while (true) {
+        int status = sendto(sockfd, (void *) &buffer, sizeof(buffer), 0, (struct sockaddr *) &serverAddress,
+                            sizeof(serverAddress));
+        if (status != -1) {
+            break;
+        }
         usleep(1);
-        handleSocket(sockfd, serverAddress);
-        if(isKeyTriggered){
+    }
+}
+
+// send queued msg
+char *sendQueuedMsg() {
+    if (sendQueueIndex > 0) {
+        json_object *request = json_object_new_object();
+        json_object *array = json_object_new_array();
+
+        json_object_object_add(request, "msg", json_object_new_string("queued_msg"));
+
+        for (int i = 0; i < sendQueueIndex; i++) {
+            json_object *current_obj = sendQueue[i];
+            json_object_array_add(array, current_obj);
+        }
+
+        json_object_object_add(request, "list", array);
+        char *json = json_object_to_json_string(request);
+
+        sendMsg(json);
+
+        sendQueueIndex = 0;
+        json_object_put(request);
+    }
+}
+
+// for debug
+void sendDebugMsg(int i) {
+    char debugMsg[STRING_BUFFER_SIZE];
+    sprintf(debugMsg, "{\"msg\":\"debug\",\"debugStatus\":\"%d\"}", i);
+    sendMsg(debugMsg);
+}
+
+// blocking socket support
+bool threadExit = false;
+int threadId;
+pthread_t thread;
+void *threadReturn;
+
+void handleSocketRunner(void *arg) {
+    while (!threadExit) {
+        handleSocket();
+    }
+    pthread_exit((void *) 0);
+}
+
+void startHandleSocketRunner() {
+    threadExit = false;
+    threadId = pthread_create(&thread, NULL, handleSocketRunner, NULL);
+}
+
+void stopHandleSocketRunner() {
+    threadExit = true;
+    threadId = pthread_join(thread, &threadReturn);
+}
+
+/* HANDLE SOCKET */
+#define PING_TIMEOUT 10000
+const char PING_MSG[] = "{\"msg\":\"ping\"}";
+const char PONG_MSG[] = "{\"msg\":\"pong\"}";
+
+#define millisecondDiff(begin, end) (((double) (end.tv_sec - begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) * 1.0e-9) * 1000)
+struct timespec lastReceivePingTime;
+struct timespec lastSendPingTime;
+
+void handleSocket();
+
+void handleMsg(json_object *);
+
+void handleCore(char *, json_object *);
+
+// <handleSocket> -> handleMsg -> handleCore
+void handleSocket() {
+    char receiveBuffer[STRING_BUFFER_SIZE];
+    int serverAddressSize = sizeof(serverAddress);
+    int recv = recvfrom(sockfd, (void *) &receiveBuffer, sizeof(receiveBuffer), 0, (struct sockaddr *) &serverAddress,
+                        &serverAddressSize);
+    if (recv != -1) {
+        json_object *obj = json_tokener_parse(receiveBuffer);
+        if (obj != NULL) {
+            handleMsg(obj);
+            json_object_put(obj);
+        } else {
+            perror("json_tokener_parse-Error");
+        }
+    }
+    struct timespec currentTime;
+    clock_gettime(CLOCK_MONOTONIC, &currentTime);
+
+    if (lastSendPingTime.tv_sec != 0 && millisecondDiff(lastSendPingTime, currentTime) >= PING_TIMEOUT / 3) {
+        int status = sendto(sockfd, (void *) &PING_MSG, sizeof(PING_MSG), 0, (struct sockaddr *) &serverAddress,
+                            serverAddressSize);
+        if (status != -1) {
+            clock_gettime(CLOCK_MONOTONIC, &lastSendPingTime);
+        }
+    }
+
+    if (lastReceivePingTime.tv_sec != 0 && millisecondDiff(lastReceivePingTime, currentTime) >= PING_TIMEOUT) {
+        exitWithSave();
+    }
+}
+
+// handleSocket -> <handleMsg> -> handleCore
+void handleMsg(json_object *obj) {
+    json_object *msg_obj = json_object_object_get(obj, "msg");
+    if (msg_obj != NULL) {
+        char *msg = json_object_get_string(msg_obj);
+        if (strcmp(msg, "init_socket_end") == 0) {
+            clock_gettime(CLOCK_MONOTONIC, &lastReceivePingTime);
+            clock_gettime(CLOCK_MONOTONIC, &lastSendPingTime);
+        } else if (strcmp(msg, "ping") == 0) {
+            clock_gettime(CLOCK_MONOTONIC, &lastReceivePingTime);
+            sendto(sockfd, (void *) &PONG_MSG, sizeof(PONG_MSG), 0, (struct sockaddr *) &serverAddress,
+                   sizeof(serverAddress));
+        } else if (strcmp(msg, "pong") == 0) {
+        } else if (strcmp(msg, "close") == 0) {
+            exitWithSave();
+        } else {
+            handleCore(msg, obj);
+        }
+    }
+}
+
+// handleSocket -> handleMsg -> <handleCore>
+bool isKeyTriggered = false;
+int keyCode = -1;
+
+// TODO FREE 말고 put으로 해제
+void handleCore(char *msg, json_object *obj) {
+    if (strcmp(msg, "key") == 0) {
+        json_object *keyObj = json_object_object_get(obj, "keyCode");
+        keyCode = json_object_get_int(keyObj);
+        isKeyTriggered = true;
+    }
+    if (strcmp(msg, "debug") == 0) {
+
+    } else {
+        // printf("Unknown Request!");
+    }
+}
+
+/* KEY EMULATION */
+int getch_by_webtiles() {
+    while (true) {
+        usleep(1);
+        sendQueuedMsg();
+        handleSocket();
+        if (isKeyTriggered) {
             isKeyTriggered = false;
             return keyCode;
         }
     }
 }
 
-void handleSocketOnce(){
-    handleSocket(sockfd, serverAddress);
-}
-
-bool threadExit = false;
-int threadId;
-pthread_t thread;
-void *threadReturn;
-
-void handleSocketRunner(void * arg){
-    while(!threadExit){
-        handleSocket(sockfd, serverAddress);
+int getch_nb_by_webtiles() {
+    if (isKeyTriggered) {
+        isKeyTriggered = false;
+        return keyCode;
     }
-    pthread_exit( (void*) 0);
+    return -1;
 }
 
-void startHandleSocketRunner(){
-    threadExit = false;
-    threadId = pthread_create(&thread,NULL,handleSocketRunner,NULL);
-}
-
-void stopHandleSocketRunner(){
-    threadExit = true;
-    threadId = pthread_join(thread, &threadReturn);
-}
-
+/* MENU TEST */
 void menu_test() {
     winid win;
     anything any;
     menu_item *pick_list = 0;
-    
+
     win = create_nhwindow(NHW_MENU);
     any = zeroany;
     any.a_int = 0;
@@ -268,15 +323,68 @@ void menu_test() {
     select_menu(win, PICK_NONE, &pick_list);
 }
 
-void append_json_array(json_object *arr, char* str) {
+void append_json_array(json_object *arr, char *str) {
     json_object *jitem = json_object_new_string(str);
     json_object *new_object = json_object_new_object();
     json_object_object_add(new_object, "item", jitem);
     json_object_array_add(arr, new_object);
 }
 
-char* make_json_msg(json_object *obj, json_object *arr) {
+char *make_json_msg(json_object *obj, json_object *arr) {
     json_object_object_add(obj, "msg", json_object_new_string("inventory"));
     json_object_object_add(obj, "items", arr);
     return json_object_to_json_string(obj);
+}
+
+/* SEND LOGIC */
+void sendText(char * text){
+    json_object *obj = json_object_new_object();
+    json_object_object_add(obj, "msg", json_object_new_string("text"));
+    json_object_object_add(obj, "text", json_object_new_string(text));
+    addSendQueue(obj);
+}
+#define MATRIX_COL 256
+int to2DIndex(x, y) {
+    return y * MATRIX_COL + x;
+}
+int to2DY(index) {
+    return index / MATRIX_COL;
+}
+int to2DX(index) {
+    return index - to2DY(MATRIX_COL, index) * MATRIX_COL;
+}
+
+void sendTile(int x, int y, int t){
+    json_object *obj = json_object_new_object();
+    int i = to2DIndex(x, y);
+    json_object_object_add(obj, "msg", json_object_new_string("tile"));
+    json_object_object_add(obj, "i", json_object_new_int(i));
+    json_object_object_add(obj, "t", json_object_new_int(t));
+    addSendQueue(obj);
+}
+
+void sendStatus(int fldidx, int percent, char * text){
+    json_object *obj = json_object_new_object();
+    json_object_object_add(obj, "msg", json_object_new_string("status"));
+    json_object_object_add(obj, "fldidx", json_object_new_int(fldidx));
+    json_object_object_add(obj, "percent", json_object_new_int(percent));
+    if(text != NULL){
+        json_object_object_add(obj, "text", json_object_new_string(text));
+    }else{
+        json_object_object_add(obj, "text", json_object_new_string(""));
+    }
+    addSendQueue(obj);
+}
+
+void sendClearTile(){
+    json_object *obj = json_object_new_object();
+    json_object_object_add(obj, "msg", json_object_new_string("clear_tile"));
+    addSendQueue(obj);
+}
+
+void sendMore(char * prompt){
+    json_object *obj = json_object_new_object();
+    json_object_object_add(obj, "msg", json_object_new_string("more"));
+    json_object_object_add(obj, "prompt", json_object_new_string(prompt));
+    addSendQueue(obj);
 }

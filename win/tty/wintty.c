@@ -1643,6 +1643,7 @@ winid window;
         /*FALLTHRU*/
     case NHW_BASE:
         clear_screen();
+        sendClearTile();
         /*for (i = 0; i < cw->maxrow; ++i)           */
         /*    finalx[i][NOW] = finalx[i][BEFORE] = 0;*/
         break;
@@ -1701,6 +1702,7 @@ register struct WinDesc *cw;
 const char *s; /* valid responses */
 {
     const char *prompt = cw->morestr ? cw->morestr : defmorestr;
+    sendMore(prompt);
     int offset = (cw->type == NHW_TEXT) ? 1 : 2;
 
     HUPSKIP();
@@ -2631,10 +2633,7 @@ const char *str;
     register const char *nb;
     register long j;
 #endif
-	// 따옴표가 내부에 들어간 텍스트가 나오면 위험함!
-	char msg[8192];
-    sprintf(msg, "{\"msg\":\"putstr\",\"str\":\"%s\"}", str);
-    sendMsg(msg);
+	sendText(str);
 	
     HUPSKIP();
     /* Assume there's a real problem if the window is missing --
@@ -3055,10 +3054,11 @@ const char *prompt; /* prompt to for menu */
         }
         if (len > cw->cols)
             cw->cols = len;
-
+        /*
         char msg[8192];
         sprintf(msg, "{\"msg\":\"putstr\", \"str\":\"%s\"}", curr->str);
         sendMsg(msg);
+        */
 
     }
     cw->plist[cw->npages] = 0; /* plist terminator */
@@ -3394,9 +3394,12 @@ xchar x, y;
 int glyph;
 int bkglyph UNUSED;
 {
+    /*
     char msg[8192];
     sprintf(msg, "{\"msg\":\"print_glyph\",\"window\":%d, \"x\":%d, \"y\":%d, \"glyph\":%d, \"bkglyph\":%d}", window, x, y, glyph, bkglyph);
     sendMsg(msg);
+    */
+
 	
     int ch;
     boolean reverse_on = FALSE;
@@ -3421,9 +3424,12 @@ int bkglyph UNUSED;
     print_vt_code3(AVTC_GLYPH_START, glyph2tile[glyph], special);
 
     #if defined(WEBTILES_GRAPHICS)
-    char updateTile[8192];
-    sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", glyph2tile[glyph], x, y);
-    sendMsg(updateTile);
+    /*
+        char updateTile[8192];
+        sprintf(updateTile, "{\"msg\":\"update_tile\",\"tile\":%d,\"x\":%d,\"y\":%d}", );
+        sendMsg(updateTile);
+     */
+    sendTile(x, y, glyph2tile[glyph]);
     #endif
 
 #ifndef NO_TERMS
@@ -3890,11 +3896,8 @@ unsigned long *colormasks;
     char goldbuf[40], *lastchar, *p;
     const char *fmt;
     boolean reset_state = NO_RESET;
-	
-	
-	char msg[8192];
-    sprintf(msg, "{\"msg\":\"status_update\",\"fldidx\":%d, \"percent\":%d, \"text\":\"%s\"}", fldidx, percent, text);
-    sendMsg(msg);
+
+    sendStatus(fldidx, percent, text);
 
     if ((fldidx < BL_RESET) || (fldidx >= MAXBLSTATS))
         return;
