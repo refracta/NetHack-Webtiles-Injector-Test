@@ -49,6 +49,10 @@ WINLIB = $(WINTTYLIB) $(WINCURSESLIB)
 WINSRC += tile.c
 WINOBJ += tile.o
 
+# WEBTILES
+WINSRC += ../win/webtiles/webtiles.c
+WINOBJ += webtiles.o
+
 WINTTYLIB=-lncurses -ltinfo
 
 CHOWN=true
